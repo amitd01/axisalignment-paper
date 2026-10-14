@@ -15,17 +15,34 @@
 % Verify with: pdffonts main.pdf  -- every row must read "Type 1".
 \usepackage[hidelinks]{hyperref}
 
+% microtype pulls in textcomp, which routes \textbullet (the itemize marker) and
+% \textsection through the TS1 encoding. With no cm-super/lmodern installed TS1
+% has no Type 1 font, so those two glyphs come out as Type 3 bitmaps -- which
+% arXiv rejects, and which pdffonts reports as a "Custom"-encoded Type 3 row.
+% Route both back to Computer Modern math glyphs, which are Type 1.
+% If you add a new symbol command and pdffonts grows a Type 3 row, it is the
+% same cause: find the glyph with pdffonts, then map it here.
+\AtBeginDocument{%
+  \renewcommand{\textbullet}{\ensuremath{\bullet}}%
+  \renewcommand{\textsection}{\ensuremath{\mathsection}}%
+}
+
 \newcommand{\rreg}{\rho_{\mathrm{reg}}}
 
 \title{Alignment's Diversity Cost Is Carried by a Small Part of the Shift:\\
 \large Stage-resolved measurement across four post-training pipelines}
 
 %% ---------------------------------------------------------------
-%% AUTHOR BLOCK -- confirm before submitting. arXiv requires a contact
-%% email on the submission form; it need not appear in the PDF.
+%% AUTHOR BLOCK
+%% The postal address (Chandivali, Mumbai 400072) is deliberately NOT here.
+%% arXiv collects it on the submission form, where it stays private; the PDF is
+%% permanent and public, and a home street address in it cannot be withdrawn.
+%% City and country are enough for a listing. Add the full address only if you
+%% decide you want it public.
 %% ---------------------------------------------------------------
 \author{Amit Das\\
-\small Think360.ai, Mumbai, India}
+\small Mumbai, India\\
+\small \texttt{amitdas@gmail.com}}
 \date{\today}
 
 \begin{document}
@@ -598,6 +615,7 @@ under an unweighted fit and temperature-like under a weighted one. We offer the
 account as a hypothesis for 7--13B and note that the 1B result is unexplained.
 
 \section{What we got wrong}
+\label{sec:failures}
 
 Four earlier conclusions in this work were overturned, by four different causes. We
 list them with their causes because a vague account of one's own errors is worth
@@ -741,7 +759,8 @@ file & contents \\
 \texttt{decomp\_resid.py} & non-linear typicality, cross-fitted shared directions \\
 \texttt{check\_tokenizers.py} & token-ID-level tokeniser identity verification \\
 \texttt{grind.py}, \texttt{matched6.py} & generation sweep and matched-diversity scoring \\
-\texttt{gen\_ctrl.py} & shuffled-delta direction control \\
+\texttt{gen\_scale.py} (mode \texttt{ctrl}) & shuffled-delta direction control \\
+\texttt{exp1e\_peakedness.py} & peakedness probe behind the withdrawn threshold (Section~\ref{sec:failures}) \\
 \texttt{pilot135m\_port/} & 135M $\gamma$ sweep and $\beta$ measurement \\
 \bottomrule
 \end{tabular}

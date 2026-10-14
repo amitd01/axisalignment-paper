@@ -657,7 +657,8 @@ reproducible without stating it.
 | `decomp_resid.py` | non-linear typicality, cross-fitted shared directions |
 | `check_tokenizers.py` | token-ID-level tokeniser identity verification |
 | `grind.py`, `matched6.py` | generation sweep and matched-diversity scoring |
-| `gen_ctrl.py` | shuffled-delta direction control |
+| `gen_scale.py` (mode `ctrl`) | shuffled-delta direction control |
+| `exp1e_peakedness.py` | peakedness probe behind the withdrawn threshold (§7) |
 | `pilot135m_port/` | 135M γ sweep and β measurement |
 
 Six pre-registrations, each hashed before its data existed, are released with the code
