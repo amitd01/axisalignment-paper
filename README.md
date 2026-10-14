@@ -1,2 +1,157 @@
-# axisalignment-paper
-Paper on axis alignment
+# Alignment's Diversity Cost Is Carried by a Small Part of the Shift
+
+Stage-resolved measurement of diversity collapse across four post-training
+pipelines. Code, raw results and pre-registrations for the paper of the same
+name.
+
+**Author:** Amit Das · amitdas@gmail.com
+**Paper:** [`paper/paper.md`](paper/paper.md) (source of record),
+[`paper/main.tex`](paper/main.tex) (arXiv submission source)
+**Licence:** CC BY 4.0 — see [`LICENSE`](LICENSE)
+
+---
+
+## What this measures
+
+Alignment reduces output diversity. The loss is usually attributed to RL on human
+preferences, with *typicality bias* — a reweighting toward what the base model
+already found likely — offered as the mechanism. This work measures both against
+four pipelines that publish every intermediate checkpoint, so each stage can be
+isolated:
+
+| family | stages measured |
+|---|---|
+| `allenai/OLMo-2-0425-1B` | base → SFT → DPO → Instruct |
+| `allenai/OLMo-2-1124-7B` | base → SFT → DPO → Instruct |
+| `allenai/OLMo-2-1124-13B` | base → SFT → DPO → Instruct |
+| `allenai/Llama-3.1-Tulu-3-8B` | base → SFT → DPO |
+
+Throughout §§2–5 of the paper, *diversity* means next-token entropy at the scored
+positions. §6 uses mean pairwise Jaccard, with median GPT-2 perplexity as an
+independent fluency judge.
+
+Three headline results:
+
+1. **Composition and consequence come apart.** The typicality-aligned component is
+   a minority of each stage's shift (≤2.2% of variance for instruction tuning,
+   ≤7.1% for the preference stage, unweighted; ~30% at most weighted) yet an exact
+   counterfactual Shapley attribution assigns it nearly all of the entropy loss
+   (87–139% instruction tuning, 102–291% preference stage). The part of the shift
+   that removes diversity is not the part that is large.
+2. **The larger component is a shared direction**, not typicality: ρ_reg > ψ at
+   every stage of all four models, against null controls at +0.008 and +0.004.
+   But neither axis explains most of the shift — squared, the shared direction is
+   roughly 1–31% of it.
+3. **Where you measure changes the answer.** Tülu-3-8B's preference stage accounts
+   for 29.2% [22.4, 35.0] of total entropy loss at a chat-template position and
+   52.8% [50.5, 55.4] over generated continuations — same checkpoints, same
+   prompts. Prompt-final scoring, closest to common practice, gives intervals
+   4.5–6× wider.
+
+### The four measurement conventions
+
+Every stage-resolved number in the paper is reported under a named convention,
+because the choice moves the answer by tens of points:
+
+| convention | scored positions |
+|---|---|
+| raw prompt-final | one position per prompt, no chat template |
+| chat-templated | one position per prompt, chat template applied |
+| **continuation, base-written** (primary) | ~190 positions per prompt, continuations written by the base model |
+| continuation, final-model-written | ~190 positions per prompt, continuations written by the final aligned model |
+
+The primary convention is the base-written continuation. Results under all four
+are in `results/`.
+
+---
+
+## Layout
+
+```
+code/                    analysis and generation
+  dump_logprobs_mps.py   per-checkpoint log-prob dumps (Apple Silicon / MPS)
+  dump_logprobs.py       same, CUDA/CPU
+  analyse_psi_family.py  stage-resolved psi and entropy, bootstrap over prompts
+  analyse_psi.py         single-family version
+  register_v2.py         shared-shift geometry (rho_reg), both arms, null controls
+  decomp.py              counterfactual Shapley entropy decomposition
+  decomp_resid.py        non-linear typicality, cross-fitted shared directions
+  check_tokenizers.py    token-ID-level tokeniser identity verification
+  gen_scale.py           generation sweep; mode `ctrl` is the shuffled-delta control
+  score_scale.py         scores the sweep
+  grind.py               sweep driver
+  matched.py, matched6.py  matched-diversity scoring
+  exp1e_peakedness.py    peakedness probe behind the withdrawn threshold (see below)
+  prompts.py             the prompt set
+  make_tables.py         builds the paper's tables from results/
+  pilot135m_port/        135M gamma sweep and beta measurement
+results/
+  PREREG-*.md            six pre-registrations, each hashed before its data existed
+  PREREG-*.sha256        the hashes
+  results_*.json         raw per-run output
+  TASK1-REPORT.md        verification reports
+  TASK2-REPORT.md
+paper/
+  paper.md               source of record
+  main.tex               arXiv submission source
+```
+
+## Reproducing
+
+```bash
+cd code
+pip install -r requirements.txt
+python dump_logprobs_mps.py      # or dump_logprobs.py off Apple Silicon
+python analyse_psi_family.py
+python register_v2.py
+python decomp.py
+python decomp_resid.py
+```
+
+Checkpoints download from the Hugging Face Hub on first use; the 13B family is
+the large one. `check_tokenizers.py` verifies at token-ID level that every
+checkpoint in a family shares a tokeniser — stage deltas are meaningless
+otherwise, and it is worth running first.
+
+Seeds: 20261012 (1B), 20260803 (135M). N = 6 samples, 32 new tokens, top-p 0.95
+held constant. Fixed seeds do not guarantee bit-identical output across hardware;
+batch-invariant kernels were not attempted, so expect small numeric drift rather
+than exact reproduction.
+
+## Pre-registrations
+
+Six, each hashed before its data existed: the 13B scale test, the register test,
+the lineage test, the entropy decomposition, the residual test and the 135M γ
+sweep. Two carry dated notes appended after the fact; the `.sha256` files cover
+the original text only, and each note states what changed and when.
+
+Verify:
+
+```bash
+cd results && shasum -a 256 -c PREREG-13B.sha256
+```
+
+## What did not work
+
+`exp1e_peakedness.py` is here because the paper reports it as a failure. An
+earlier draft claimed a threshold in the peakedness of the aligned distribution
+above which a particular intervention helps. That threshold is not a constant: it
+moves across the full 0.000–1.000 range with the matched-diversity target alone,
+and the model it came from sits far off the measured regime (47× collapse against
+the 1.5–2.2× actually observed). The claim was withdrawn. §7 of the paper lists
+this and three other overturned conclusions.
+
+## Citing
+
+```bibtex
+@misc{das2026diversitycost,
+  title        = {Alignment's Diversity Cost Is Carried by a Small Part of the
+                  Shift: Stage-resolved measurement across four post-training
+                  pipelines},
+  author       = {Das, Amit},
+  year         = {2026},
+  howpublished = {\url{https://github.com/amitd01/axisalignment-paper}}
+}
+```
+
+The arXiv identifier will replace `howpublished` once the paper is posted.
