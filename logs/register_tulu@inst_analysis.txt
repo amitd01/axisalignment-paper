@@ -1,0 +1,41 @@
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+====================================================================================================
+REGISTER TEST v2 -- tulu@inst: ['meta-llama/Llama-3.1-8B', 'allenai/Llama-3.1-Tulu-3-8B-SFT', 'allenai/Llama-3.1-Tulu-3-8B-DPO', 'allenai/Llama-3.1-Tulu-3-8B']
+====================================================================================================
+
+ARM A -- chat-templated, assistant-start position (36 rows)
+  SFT         drop +2.0916  share   62.1%  [  56.5%,   68.6%]
+  DPO         drop +0.9837  share   29.2%  [  22.4%,   35.0%]
+  RLVR/final  drop +0.2916  share    8.7%  [   6.1%,   11.3%]
+  EOS mass: {'base': '1.64e-05', 'sft': '3.37e-03', 'dpo': '3.60e-04', 'inst': '2.41e-04'}
+  base->sft         psi_pl -0.040 [-0.055,-0.026]  rho_pl +0.681 [+0.662,+0.699]  part_pl +0.681 [+0.662,+0.700]  rho_minus_psi_pl +0.721 [+0.701,+0.742]
+                    psi_50 -0.001 [-0.045,+0.043]  rho_50 +0.733 [+0.702,+0.763]  psi_w -0.006 [-0.049,+0.040]  rho_w +0.810 [+0.786,+0.831]
+  sft->dpo          psi_pl -0.044 [-0.060,-0.027]  rho_pl +0.583 [+0.556,+0.609]  part_pl +0.582 [+0.554,+0.609]  rho_minus_psi_pl +0.627 [+0.601,+0.652]
+                    psi_50 +0.150 [+0.088,+0.212]  rho_50 +0.533 [+0.476,+0.582]  psi_w +0.252 [+0.137,+0.359]  rho_w +0.565 [+0.486,+0.640]
+  dpo->inst         psi_pl +0.052 [+0.035,+0.069]  rho_pl +0.521 [+0.496,+0.547]  part_pl +0.522 [+0.496,+0.547]  rho_minus_psi_pl +0.469 [+0.438,+0.501]
+                    psi_50 +0.198 [+0.154,+0.243]  rho_50 +0.556 [+0.524,+0.588]  psi_w +0.385 [+0.281,+0.483]  rho_w +0.636 [+0.586,+0.687]
+  base->inst        psi_pl -0.096 [-0.111,-0.082]  rho_pl +0.665 [+0.645,+0.686]  part_pl +0.662 [+0.641,+0.683]  rho_minus_psi_pl +0.761 [+0.738,+0.784]
+                    psi_50 +0.018 [-0.025,+0.062]  rho_50 +0.716 [+0.681,+0.748]  psi_w -0.035 [-0.083,+0.015]  rho_w +0.778 [+0.746,+0.806]
+
+ARM B -- continuations written by allenai/Llama-3.1-Tulu-3-8B, teacher-forced, 6892 positions
+  SFT         drop +0.4003  share   49.7%  [  46.6%,   52.6%]
+  DPO         drop +0.3567  share   44.3%  [  41.8%,   47.0%]
+  RLVR/final  drop +0.0483  share    6.0%  [   5.2%,    6.9%]
+  base->sft         psi_pl +0.108 [+0.095,+0.121]  rho_pl +0.254 [+0.236,+0.272]  part_pl +0.260 [+0.241,+0.278]  rho_minus_psi_pl +0.146 [+0.131,+0.161]
+                    psi_50 +0.235 [+0.214,+0.257]  rho_50 +0.170 [+0.154,+0.185]  psi_w +0.416 [+0.384,+0.447]  rho_w +0.123 [+0.107,+0.138]
+                    promoted: ['.\n\n', " '", '.', "'s", '...', ' The', '!', ' various', ' In', ' ...', '.\n', ' -', ' ...\n', ' ,', ' ']
+                    demoted:  [' cross', ' place', ' red', '—', '\xa0', ' back', ' snow', ' head', ' cover', ' house', ' window', ' wall', ' fl', ' point', ' change']
+  sft->dpo          psi_pl +0.253 [+0.241,+0.264]  rho_pl +0.492 [+0.478,+0.505]  part_pl +0.546 [+0.532,+0.559]  rho_minus_psi_pl +0.239 [+0.221,+0.257]
+                    psi_50 +0.347 [+0.328,+0.365]  rho_50 +0.395 [+0.386,+0.405]  psi_w +0.552 [+0.530,+0.575]  rho_w +0.146 [+0.130,+0.162]
+                    promoted: ['\xa0', '.\n\n', '—', ' …', ' —', ' ...', ' ', ' (', '--', ' [', '...', ' ,', ' --', ':\n', ':']
+                    demoted:  [' place', ' two', ' other', ' another', ' outside', ' you', ' my', ' go', ' then', ' there', ' paint', ' book', ' help', ' what', ' three']
+  dpo->inst         psi_pl +0.163 [+0.152,+0.173]  rho_pl +0.505 [+0.488,+0.522]  part_pl +0.521 [+0.505,+0.539]  rho_minus_psi_pl +0.342 [+0.321,+0.365]
+                    psi_50 +0.222 [+0.206,+0.237]  rho_50 +0.469 [+0.451,+0.487]  psi_w +0.366 [+0.337,+0.395]  rho_w +0.331 [+0.313,+0.349]
+                    promoted: ['\n', ' "', ' ,', " '", ' ‘', ' “', ' and', ' also', ';', ' (', ' –', ' still', ':', ' all', ' .']
+                    demoted:  [' if', ' because', ' this', ' when', ' your', ' out', '.\n', ' what', ' while', ' will', ' under', ' over', ' through', ' high', ' not']
+  base->inst        psi_pl +0.184 [+0.173,+0.194]  rho_pl +0.335 [+0.317,+0.352]  part_pl +0.360 [+0.341,+0.378]  rho_minus_psi_pl +0.151 [+0.137,+0.166]
+                    psi_50 +0.325 [+0.307,+0.344]  rho_50 +0.232 [+0.217,+0.247]  psi_w +0.541 [+0.519,+0.562]  rho_w +0.095 [+0.081,+0.110]
+                    promoted: ['.\n\n', " '", ' ...', '...', ' ,', "'s", ' ', ' ...\n', ',', ' …', ' --', ' .', ' "', ' …\n', ' various']
+                    demoted:  [' place', ' change', ' look', ' red', ' line', ' cross', ' wall', ' fire', ' driving', ' back', ' point', ' right', ' left', ' head', ' break']
+
+saved -> /Users/amitdas/claude/Repos/alignment-axis/results/results_register_tulu@inst.json

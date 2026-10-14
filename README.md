@@ -24,7 +24,7 @@ isolated:
 | `allenai/OLMo-2-0425-1B` | base → SFT → DPO → Instruct |
 | `allenai/OLMo-2-1124-7B` | base → SFT → DPO → Instruct |
 | `allenai/OLMo-2-1124-13B` | base → SFT → DPO → Instruct |
-| `allenai/Llama-3.1-Tulu-3-8B` | base → SFT → DPO |
+| `allenai/Llama-3.1-Tulu-3-8B` | base → SFT → DPO → Instruct (RLVR) |
 
 Throughout §§2–5 of the paper, *diversity* means next-token entropy at the scored
 positions. §6 uses mean pairwise Jaccard, with median GPT-2 perplexity as an
@@ -38,8 +38,9 @@ Three headline results:
    counterfactual Shapley attribution assigns it nearly all of the entropy loss
    (87–139% instruction tuning, 102–291% preference stage). The part of the shift
    that removes diversity is not the part that is large.
-2. **The larger component is a shared direction**, not typicality: ρ_reg > ψ at
-   every stage of all four models, against null controls at +0.008 and +0.004.
+2. **The larger component is a shared direction**, not typicality: ρ_reg exceeds ψ
+   across the plausible set at every stage of all four models, against null
+   controls at +0.008 and +0.004.
    But neither axis explains most of the shift — squared, the shared direction is
    roughly 1–31% of it.
 3. **Where you measure changes the answer.** Tülu-3-8B's preference stage accounts
@@ -84,8 +85,21 @@ code/                    analysis and generation
   exp1d_misspec.py       the withdrawn psi* threshold (see "What did not work")
   exp1e_peakedness.py    the peakedness probe that withdrew it
   prompts.py             the prompt set
-  make_tables.py         builds the paper's tables from results/
+  make_tables.py         STALE: builds the earlier 1B-era tables, not this paper's
   pilot135m_port/        135M gamma sweep and beta measurement
+  dumps/135m/            135M sweep outputs: gen_*.json, beta135m.json, scored sweep
+                         (the 7B/13B/Tulu dumps are ~53GB and are not shipped;
+                          regenerate them with dump_logprobs_mps.py)
+logs/                    run scripts and the evaluation outputs behind the numbers
+  frontier_135m.txt      the 135M diversity/fluency frontier (3.00x, 0.98x, 0.17-0.37)
+  score135m.txt          scored 135M sweep
+  beta135m via code/dumps/135m/beta135m.json   the beta = +0.081 measurement
+  lineage_eval.txt       the cross-lineage statistic (-0.194 both arms)
+  prereg13b_eval.py/.txt the pre-registered 13B evaluation (+15.6 [12.7, 18.6])
+  r2_full.py/.txt        R^2 point estimates and intervals, unweighted and weighted
+  offset_check.py        the whose-text offset check
+  *_analysis.txt         per-run analysis output
+  *.log, *.sh            raw run logs and the shell drivers that produced them
 results/
   PREREG-*.md            six pre-registrations, each hashed before its data existed
   PREREG-*.sha256        the hashes

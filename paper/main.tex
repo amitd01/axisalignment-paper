@@ -66,8 +66,8 @@ counterfactual Shapley attribution of each stage's entropy change assigns that
 same component \textbf{nearly all (87--139\%) of instruction tuning's entropy loss
 and all (102--291\%) of the preference stage's}, under the pre-registered weighted
 fit. Comparing like with like, a component accounting for about 30\% of the shift
-at most carries nearly all of its entropy cost. The part of the shift that removes
-diversity is not the part that is large.
+at most carries nearly all of its entropy cost. The diversity cost is carried by a
+small part of the shift.
 
 \paragraph{The larger of the two components we measured is a shared direction.}
 Writing $\rreg$ for the
@@ -340,7 +340,7 @@ We also report the partial correlation of $\delta$ with the shared direction
 controlling for $\log p_{\mathrm{ref}}$, which asks whether the shared direction is
 typicality under another name.
 
-\subsection{The shared shift dominates the plausible set}
+\subsection{The shared shift exceeds typicality across the plausible set}
 
 Pre-registered test, base $\to$ SFT, plausible region
 ($p_{\mathrm{ref}} > 10^{-6}$), base-written continuations:
@@ -507,7 +507,8 @@ with weighted median $\beta \approx +0.09$ to $+0.12$ --- a local temperature of
 about 0.9. The 1B is the exception \textbf{for the preference stage}:
 $\beta \approx 0$ there, with components nearly cancelling, so only their signs are
 interpretable. Its instruction-tuning stage behaves like the others,
-$\beta \approx +0.10$.
+$\beta \approx +0.10$. $\beta$ was not measured at the 13B, where only the Shapley
+shares are available.
 
 \paragraph{Instruction tuning, and a fit-dependence we initially mistook for a
 mechanism.} An earlier draft reported that instruction tuning's costly component was
@@ -622,13 +623,15 @@ list them with their causes because a vague account of one's own errors is worth
 less than a precise one.
 
 \begin{center}
-\begin{tabular}{ll}
+% p-column on the right: the "what overturned it" cells vary a lot in length and
+% an ll table overflows the text block as soon as one of them grows.
+\begin{tabular}{l p{0.34\textwidth}}
 \toprule
 earlier claim & what overturned it \\
 \midrule
 ``Instruction tuning carries $\sim$99\% of the entropy loss'' & position convention \\
 A 1B $\to$ 7B jump in the preference share & position convention \\
-``Reference subtraction fails catastrophically'' & comparison baseline ($T = 1.0$) \\
+``Reference subtraction fails catastrophically'' & comparison baseline ($T = 1.0$ instead of matched diversity) \\
 ``No reference-axis operator can reach SFT's loss'' & operationalisation (linear-only fit) \\
 \bottomrule
 \end{tabular}
@@ -698,7 +701,7 @@ within two lineages that use related instruction mixtures.
 T\"ulu-3-style mixtures, so shared training data remains a live explanation.
 \item \textbf{$\beta$ was measured at the 1B, 7B and T\"ulu-8B}, on 400 sampled
 positions, but not at the 13B. The 1B preference stage is the one place it is
-$\approx 0$.
+$\approx 0$. The $R^2$ and Shapley results in Section~5.1 cover all four models.
 \item \textbf{``Typicality'' is operationalised} as a linear and piecewise-linear
 function of reference log-probability. It is one operationalisation of a claim the
 source literature does not state formally. Section~5.2 shows that two analyst
@@ -715,23 +718,30 @@ nothing.
 
 \section{Conclusion}
 
-Across four pipelines, the part of the alignment shift that removes diversity is not
-the part that is large. A typicality-aligned component accounting for about 30\% of
+Across four pipelines, alignment's diversity cost is carried by a small part of the
+alignment shift. A typicality-aligned component accounting for about 30\% of
 a stage's shift at most --- and under an unweighted fit, at most 7\% --- carries
 nearly all of its entropy loss, at both stages, in every model measured. Larger
-than that component, though itself a minority of the shift, is a shared, largely
-context-independent direction: measurable at every stage of every model, surviving
-a partial correlation against reference typicality, with null controls at 0.008 and
-0.004. Most of each stage's shift is accounted for by neither axis, and we do not
-characterise what the remainder is.
+than that component, though itself a minority of the shift, is a shared direction:
+measurable at every stage of every model, surviving a partial correlation against
+reference typicality, with null controls at 0.008 and 0.004. Its context-invariance
+varies with scale and is weak at the smallest --- $\rreg = 0.09$ at the 1B against
+0.26--0.45 at 7--13B --- so ``context-independent'' is a description of the larger
+models, not of all four. Most of each stage's shift is accounted for by neither
+axis, we do not characterise what the remainder is, and we do not claim it is
+inert: an exact decomposition assigns the typicality component nearly all of the
+entropy loss, but that is an attribution of the loss, not a demonstration that
+nothing else moves it.
 
-The two findings together offer a reading of the 1B decoding-time results: an
-operator on the reference axis acts on the axis that carries the entropy, and at
-7--8B the entropy-relevant part of the preference shift is already close to a
-temperature, so there is little for such an operator to recover that temperature
-does not. It is only a reading. The same operator beat temperature threefold at
-135M, no decoding-time intervention was run above 1B, and the 1B null is
-unexplained (Section~6.3). They also raise a
+Those findings suggest a hypothesis about larger scales, which this work does not
+test: an operator on the reference axis acts on the axis that carries the entropy,
+and at 7--8B the entropy-relevant part of the preference shift is already close to a
+temperature, so there would be little for such an operator to recover that
+temperature does not. It is a hypothesis and not an account of what we measured. No
+decoding-time intervention was run above 1B. It cannot be the explanation of the 1B
+null, where the preference stage's $\beta \approx 0$ and $\lambda$ acts mostly on
+instruction tuning (Section~6.3); that null stays unexplained, and the same operator
+beat temperature threefold at 135M. The results also raise a
 question this work does not answer. The field measures alignment's effect through
 diversity metrics, and most of what alignment does to the next-token distribution
 does not appear in them.
@@ -763,6 +773,7 @@ file & contents \\
 \texttt{exp1d\_misspec.py} & the withdrawn $\psi^{*}$ threshold (Sec.~\ref{sec:failures}) \\
 \texttt{exp1e\_peakedness.py} & the peakedness probe that withdrew it \\
 \texttt{pilot135m\_port/} & 135M $\gamma$ sweep and $\beta$ measurement \\
+\texttt{logs/} & run scripts and evaluation outputs behind the reported numbers \\
 \bottomrule
 \end{tabular}
 \end{center}

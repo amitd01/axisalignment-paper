@@ -1,0 +1,33 @@
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights: 100%|██████████| 355/355 [00:00<00:00, 10242.04it/s]
+allenai/OLMo-2-1124-7B-Instruct: params ['torch.bfloat16'] on mps
+saved 216 continuations, mean len 31.4
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights:   0%|          | 1/355 [00:00<05:27,  1.08it/s]Loading weights:  13%|█▎        | 47/355 [00:01<00:05, 60.20it/s]Loading weights:  19%|█▉        | 69/355 [00:01<00:04, 65.66it/s]Loading weights:  24%|██▍       | 85/355 [00:01<00:03, 71.14it/s]Loading weights:  28%|██▊       | 98/355 [00:01<00:03, 74.39it/s]Loading weights:  31%|███       | 110/355 [00:01<00:03, 76.08it/s]Loading weights:  34%|███▍      | 121/355 [00:01<00:03, 77.88it/s]Loading weights:  37%|███▋      | 131/355 [00:02<00:02, 75.21it/s]Loading weights:  39%|███▉      | 140/355 [00:02<00:03, 71.52it/s]Loading weights:  42%|████▏     | 148/355 [00:02<00:03, 67.17it/s]Loading weights:  44%|████▍     | 157/355 [00:02<00:03, 61.68it/s]Loading weights:  47%|████▋     | 168/355 [00:02<00:03, 55.29it/s]Loading weights:  50%|█████     | 179/355 [00:03<00:03, 52.42it/s]Loading weights:  53%|█████▎    | 189/355 [00:03<00:02, 60.32it/s]Loading weights:  55%|█████▌    | 196/355 [00:03<00:03, 50.78it/s]Loading weights:  57%|█████▋    | 202/355 [00:03<00:03, 41.17it/s]Loading weights:  60%|█████▉    | 212/355 [00:03<00:03, 40.78it/s]Loading weights:  63%|██████▎   | 223/355 [00:04<00:03, 40.72it/s]Loading weights:  66%|██████▌   | 234/355 [00:04<00:02, 42.46it/s]Loading weights:  69%|██████▉   | 245/355 [00:04<00:02, 43.85it/s]Loading weights:  72%|███████▏  | 256/355 [00:04<00:02, 43.31it/s]Loading weights:  75%|███████▌  | 267/355 [00:05<00:01, 44.76it/s]Loading weights:  78%|███████▊  | 277/355 [00:05<00:01, 52.35it/s]Loading weights:  80%|███████▉  | 283/355 [00:06<00:03, 21.49it/s]Loading weights:  81%|████████  | 288/355 [00:06<00:02, 23.98it/s]Loading weights:  83%|████████▎ | 293/355 [00:06<00:03, 16.40it/s]Loading weights:  84%|████████▍ | 299/355 [00:07<00:02, 19.73it/s]Loading weights:  85%|████████▌ | 303/355 [00:07<00:02, 18.47it/s]Loading weights:  88%|████████▊ | 311/355 [00:07<00:02, 21.30it/s]Loading weights:  90%|█████████ | 320/355 [00:07<00:01, 29.44it/s]Loading weights:  92%|█████████▏| 325/355 [00:08<00:01, 23.31it/s]Loading weights:  94%|█████████▍| 333/355 [00:08<00:00, 24.65it/s]Loading weights:  96%|█████████▋| 342/355 [00:08<00:00, 32.11it/s]Loading weights:  98%|█████████▊| 347/355 [00:08<00:00, 25.91it/s]Loading weights: 100%|██████████| 355/355 [00:08<00:00, 40.16it/s]
+allenai/OLMo-2-1124-7B: params ['torch.bfloat16'] on mps
+saved olmo7b@inst/base: A 36 rows, B 6789 rows, excluded mass max 0.00e+00
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights: 100%|██████████| 355/355 [00:00<00:00, 96230.72it/s]
+allenai/OLMo-2-1124-7B-SFT: params ['torch.bfloat16'] on mps
+saved olmo7b@inst/sft: A 36 rows, B 6789 rows, excluded mass max 0.00e+00
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights: 100%|██████████| 355/355 [00:00<00:00, 87422.38it/s]
+allenai/OLMo-2-1124-7B-DPO: params ['torch.bfloat16'] on mps
+saved olmo7b@inst/dpo: A 36 rows, B 6789 rows, excluded mass max 0.00e+00
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights: 100%|██████████| 355/355 [00:00<00:00, 10737.64it/s]
+allenai/OLMo-2-1124-7B-Instruct: params ['torch.bfloat16'] on mps
+saved olmo7b@inst/inst: A 36 rows, B 6789 rows, excluded mass max 0.00e+00
+SCORED olmo7b@inst
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 10959.25it/s]
+allenai/Llama-3.1-Tulu-3-8B: params ['torch.bfloat16'] on mps
+saved 216 continuations, mean len 31.9
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 9847.05it/s]
+meta-llama/Llama-3.1-8B: params ['torch.bfloat16'] on mps
+saved tulu@inst/base: A 36 rows, B 6892 rows, excluded mass max 0.00e+00
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 10838.76it/s]
+allenai/Llama-3.1-Tulu-3-8B-SFT: params ['torch.bfloat16'] on mps
+saved tulu@inst/sft: A 36 rows, B 6892 rows, excluded mass max 2.40e-04
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 9888.22it/s]
+allenai/Llama-3.1-Tulu-3-8B-DPO: params ['torch.bfloat16'] on mps
+saved tulu@inst/dpo: A 36 rows, B 6892 rows, excluded mass max 7.78e-04
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 10840.50it/s]
+allenai/Llama-3.1-Tulu-3-8B: params ['torch.bfloat16'] on mps
+saved tulu@inst/inst: A 36 rows, B 6892 rows, excluded mass max 7.25e-04
+SCORED tulu@inst
+REGISTER_DONE

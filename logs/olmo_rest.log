@@ -1,0 +1,16 @@
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights:   1%|          | 1/179 [00:00<01:22,  2.17it/s]Loading weights:  45%|████▍     | 80/179 [00:00<00:00, 165.28it/s]Loading weights:  61%|██████▏   | 110/179 [00:00<00:00, 169.32it/s]Loading weights:  75%|███████▍  | 134/179 [00:00<00:00, 160.02it/s]Loading weights:  87%|████████▋ | 155/179 [00:01<00:00, 156.48it/s]Loading weights:  97%|█████████▋| 174/179 [00:01<00:00, 149.96it/s]Loading weights: 100%|██████████| 179/179 [00:01<00:00, 142.80it/s]
+allenai/OLMo-2-0425-1B: params ['torch.bfloat16'] on mps
+saved olmo_base: (36, 100352) vocab=100352 on mps
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 72003.49it/s]
+allenai/OLMo-2-0425-1B-SFT: params ['torch.bfloat16'] on mps
+saved olmo_sft: (36, 100352) vocab=100352 on mps
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 78789.00it/s]
+allenai/OLMo-2-0425-1B-DPO: params ['torch.bfloat16'] on mps
+saved olmo_dpo: (36, 100352) vocab=100352 on mps
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 77551.95it/s]
+allenai/OLMo-2-0425-1B-Instruct: params ['torch.bfloat16'] on mps
+saved olmo_inst: (36, 100352) vocab=100352 on mps
+OLMO_ALL_DONE

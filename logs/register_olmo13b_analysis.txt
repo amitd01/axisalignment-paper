@@ -1,0 +1,40 @@
+====================================================================================================
+REGISTER TEST v2 -- olmo13b: ['allenai/OLMo-2-1124-13B', 'allenai/OLMo-2-1124-13B-SFT', 'allenai/OLMo-2-1124-13B-DPO', 'allenai/OLMo-2-1124-13B-Instruct']
+====================================================================================================
+
+ARM A -- chat-templated, assistant-start position (36 rows)
+  SFT         drop +2.3607  share   63.5%  [  57.9%,   69.1%]
+  DPO         drop +0.9956  share   26.8%  [  22.0%,   31.6%]
+  RLVR/final  drop +0.3596  share    9.7%  [   8.1%,   11.3%]
+  EOS mass: {'base': '2.25e-05', 'sft': '1.95e-03', 'dpo': '9.04e-05', 'inst': '1.45e-05'}
+  base->sft         psi_pl +0.033 [+0.014,+0.051]  rho_pl +0.713 [+0.678,+0.744]  part_pl +0.714 [+0.679,+0.745]  rho_minus_psi_pl +0.680 [+0.643,+0.713]
+                    psi_50 +0.029 [-0.014,+0.072]  rho_50 +0.731 [+0.693,+0.765]  psi_w +0.078 [+0.012,+0.142]  rho_w +0.788 [+0.758,+0.817]
+  sft->dpo          psi_pl +0.052 [+0.028,+0.075]  rho_pl +0.617 [+0.577,+0.656]  part_pl +0.620 [+0.581,+0.658]  rho_minus_psi_pl +0.565 [+0.514,+0.616]
+                    psi_50 +0.231 [+0.188,+0.275]  rho_50 +0.559 [+0.512,+0.603]  psi_w +0.431 [+0.327,+0.528]  rho_w +0.642 [+0.579,+0.703]
+  dpo->inst         psi_pl +0.237 [+0.211,+0.265]  rho_pl +0.443 [+0.398,+0.485]  part_pl +0.426 [+0.382,+0.468]  rho_minus_psi_pl +0.206 [+0.158,+0.253]
+                    psi_50 +0.460 [+0.414,+0.505]  rho_50 +0.377 [+0.305,+0.442]  psi_w +0.663 [+0.575,+0.742]  rho_w +0.420 [+0.264,+0.568]
+  base->inst        psi_pl +0.004 [-0.018,+0.025]  rho_pl +0.713 [+0.670,+0.750]  part_pl +0.714 [+0.672,+0.751]  rho_minus_psi_pl +0.709 [+0.662,+0.750]
+                    psi_50 +0.069 [+0.021,+0.117]  rho_50 +0.700 [+0.664,+0.735]  psi_w +0.111 [+0.040,+0.185]  rho_w +0.758 [+0.722,+0.791]
+
+ARM B -- continuations written by allenai/OLMo-2-1124-13B, teacher-forced, 6871 positions
+  SFT         drop +0.1673  share   40.5%  [  36.7%,   44.1%]
+  DPO         drop +0.2024  share   49.0%  [  46.0%,   52.2%]
+  RLVR/final  drop +0.0435  share   10.5%  [   9.8%,   11.4%]
+  base->sft         psi_pl +0.118 [+0.103,+0.133]  rho_pl +0.445 [+0.431,+0.457]  part_pl +0.447 [+0.433,+0.459]  rho_minus_psi_pl +0.326 [+0.307,+0.345]
+                    psi_50 +0.172 [+0.152,+0.192]  rho_50 +0.328 [+0.315,+0.340]  psi_w +0.304 [+0.273,+0.335]  rho_w +0.267 [+0.254,+0.280]
+                    promoted: [':\n', " '", '.\n', ' often', ':\n\n', ' during', ' likely', ' potential', ' might', ' unique', ' various', ' could', ' clean', ' effectively', ' within']
+                    demoted:  ['\xa0', '\n\n\n', '…\n\n', ' …', '…', ' huge', ' school', '\n\n', '.\n\n\n', ' word', ' particular', ' red', '...\n\n', ' l', ' pick']
+  sft->dpo          psi_pl +0.256 [+0.244,+0.269]  rho_pl +0.386 [+0.374,+0.398]  part_pl +0.411 [+0.397,+0.423]  rho_minus_psi_pl +0.130 [+0.116,+0.143]
+                    psi_50 +0.262 [+0.240,+0.286]  rho_50 +0.259 [+0.248,+0.270]  psi_w +0.433 [+0.405,+0.461]  rho_w +0.096 [+0.083,+0.108]
+                    promoted: ['\xa0', '...\n\n', ' (', ':\n\n', ' —', ' ', ' [', ' --', " '", '.\n\n\n\n', '—', '--', ' ‘', '."\n\n', ' ...']
+                    demoted:  [' man', ' you', ' four', ' computer', ' water', ' color', ' there', ' fire', ' is', ' writing', ' cannot', ' heat', ' children', ' music', ' next']
+  dpo->inst         psi_pl +0.218 [+0.203,+0.235]  rho_pl +0.425 [+0.413,+0.436]  part_pl +0.434 [+0.422,+0.445]  rho_minus_psi_pl +0.206 [+0.184,+0.227]
+                    psi_50 +0.278 [+0.259,+0.299]  rho_50 +0.426 [+0.409,+0.442]  psi_w +0.479 [+0.453,+0.504]  rho_w +0.371 [+0.350,+0.391]
+                    promoted: [' ', ' “', '’s', ' –', '\xa0', ' "', ' ‘', ' A', '\n', '!', ' directly', '\n\n', ' under', ' direct', ' effectively']
+                    demoted:  ['<|endoftext|>', ' there', " '", ' sort', ' let', ' they', ' made', ' [', ' might', ' make', ' someone', '.\n\n\n\n', ' some', ' he', ' here']
+  base->inst        psi_pl +0.224 [+0.207,+0.240]  rho_pl +0.398 [+0.386,+0.409]  part_pl +0.409 [+0.397,+0.419]  rho_minus_psi_pl +0.174 [+0.153,+0.195]
+                    psi_50 +0.275 [+0.252,+0.299]  rho_50 +0.211 [+0.202,+0.219]  psi_w +0.466 [+0.437,+0.494]  rho_w +0.137 [+0.122,+0.151]
+                    promoted: [':\n\n', " '", ' ', ' "', ' effectively', ':\n', ' directly', ' --', '!\n\n', ' essentially', '."\n\n', ' —', ' potential', '.\n\n', '.\n\n\n\n']
+                    demoted:  [' number', ' man', ' word', ' huge', ' black', ' computer', ' fire', ' school', ' pick', ' people', ' words', ' there', ' world', ' glass', ' money']
+
+saved -> /Users/amitdas/claude/Repos/alignment-axis/results/results_register_olmo13b.json

@@ -1,0 +1,17 @@
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights:   1%|          | 1/179 [00:00<01:20,  2.22it/s]Loading weights:  50%|█████     | 90/179 [00:00<00:00, 215.97it/s]Loading weights:  80%|███████▉  | 143/179 [00:00<00:00, 217.52it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 192.28it/s]
+allenai/OLMo-2-0425-1B: params ['torch.bfloat16'] on mps
+saved 216 continuations, mean len 31.7
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights:  87%|████████▋ | 156/179 [00:00<00:00, 1559.19it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 1615.74it/s]
+allenai/OLMo-2-0425-1B: params ['torch.bfloat16'] on mps
+saved olmo/base: A 36 rows, B 6839 rows, excluded mass max 0.00e+00
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 75683.51it/s]
+allenai/OLMo-2-0425-1B-SFT: params ['torch.bfloat16'] on mps
+saved olmo/sft: A 36 rows, B 6839 rows, excluded mass max 0.00e+00
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 76688.50it/s]
+allenai/OLMo-2-0425-1B-DPO: params ['torch.bfloat16'] on mps
+saved olmo/dpo: A 36 rows, B 6839 rows, excluded mass max 0.00e+00
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 19195.65it/s]
+allenai/OLMo-2-0425-1B-Instruct: params ['torch.bfloat16'] on mps
+saved olmo/inst: A 36 rows, B 6839 rows, excluded mass max 0.00e+00
+SCORED olmo
+REGISTER_DONE

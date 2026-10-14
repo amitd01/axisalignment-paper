@@ -1,0 +1,20 @@
+
+CROSS-LINEAGE: 7B-Instruct text (prereg)
+   base  H on base text 3.088  on this text 2.838  change -0.251 [-0.319, -0.181]
+   sft   H on base text 2.807  on this text 2.363  change -0.444 [-0.514, -0.370]
+   dpo   H on base text 2.689  on this text 2.281  change -0.409 [-0.481, -0.332]
+   inst  H on base text 2.662  on this text 2.253  change -0.409 [-0.482, -0.332]
+   X[sft] = change(sft) - change(base) = -0.194 [-0.224, -0.163]
+   X[dpo] = change(dpo) - change(base) = -0.158 [-0.190, -0.126]
+   X[inst] = change(inst) - change(base) = -0.159 [-0.191, -0.126]
+   DPO share on this text 14.0%
+
+same-lineage reference: 1B-Instruct text
+   base  H on base text 3.088  on this text 3.034  change -0.055 [-0.112, +0.008]
+   sft   H on base text 2.807  on this text 2.558  change -0.249 [-0.314, -0.183]
+   dpo   H on base text 2.689  on this text 2.452  change -0.238 [-0.302, -0.175]
+   inst  H on base text 2.662  on this text 2.422  change -0.241 [-0.305, -0.178]
+   X[sft] = change(sft) - change(base) = -0.194 [-0.230, -0.158]
+   X[dpo] = change(dpo) - change(base) = -0.183 [-0.224, -0.144]
+   X[inst] = change(inst) - change(base) = -0.186 [-0.228, -0.147]
+   DPO share on this text 17.4%

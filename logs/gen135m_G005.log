@@ -1,0 +1,3 @@
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights:  26%|██▌       | 71/272 [00:00<00:00, 697.64it/s]Loading weights:  52%|█████▏    | 141/272 [00:00<00:00, 540.78it/s]Loading weights:  73%|███████▎  | 198/272 [00:00<00:00, 486.86it/s]Loading weights:  91%|█████████ | 248/272 [00:00<00:00, 477.13it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 482.18it/s]
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 3345.76it/s]
+done G005

@@ -1,0 +1,29 @@
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 7970.89it/s]
+allenai/Llama-3.1-Tulu-3-8B-SFT: params ['torch.bfloat16'] on mps
+saved tulu_sft: (36, 128264) vocab=128264 on mps
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 10326.08it/s]
+unsloth/Meta-Llama-3.1-8B: params ['torch.bfloat16'] on mps
+saved tulu_mirrorbase: (36, 128256) vocab=128256 on mps
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 91241.87it/s]
+meta-llama/Llama-3.1-8B: params ['torch.bfloat16'] on mps
+saved tulu_base: (36, 128256) vocab=128256 on mps
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 17135.71it/s]
+allenai/Llama-3.1-Tulu-3-8B-DPO: params ['torch.bfloat16'] on mps
+saved tulu_dpo: (36, 128264) vocab=128264 on mps
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 77269.08it/s]
+allenai/Llama-3.1-Tulu-3-8B: params ['torch.bfloat16'] on mps
+saved tulu_inst: (36, 128264) vocab=128264 on mps
+TULU_MPS_DONE
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 10854.48it/s]
+meta-llama/Llama-3.1-8B: params ['torch.bfloat16'] on cpu
+saved tulucpu_base: (36, 128256) vocab=128256 on cpu
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 10309.94it/s]
+allenai/Llama-3.1-Tulu-3-8B-SFT: params ['torch.bfloat16'] on cpu
+saved tulucpu_sft: (36, 128264) vocab=128264 on cpu
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 10931.28it/s]
+allenai/Llama-3.1-Tulu-3-8B-DPO: params ['torch.bfloat16'] on cpu
+saved tulucpu_dpo: (36, 128264) vocab=128264 on cpu
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 9714.60it/s]
+allenai/Llama-3.1-Tulu-3-8B: params ['torch.bfloat16'] on cpu
+saved tulucpu_inst: (36, 128264) vocab=128264 on cpu
+TULU_CPU_DONE

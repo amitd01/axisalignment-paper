@@ -1,0 +1,24 @@
+
+olmo base->sft: loss +0.2814 nats, |U|=20945, max Shapley err 1.9e-16
+   lin_typ  122.3% [ 106.8, 139.8]   nonlin_typ    0.0% [   0.0,   0.0]   shared   10.1% [   6.8,  13.9]   eps  -28.0% [ -45.5, -12.0]   outside   -4.4% [  -8.3,  -1.0]
+
+olmo sft->dpo: loss +0.1176 nats, |U|=19662, max Shapley err 8.3e-17
+   lin_typ  203.6% [ 171.0, 245.3]   nonlin_typ    0.0% [   0.0,   0.0]   shared -245.2% [-301.2,-204.2]   eps  138.0% [ 117.2, 163.3]   outside    3.6% [   2.1,   4.9]
+
+olmo7b base->sft: loss +0.4600 nats, |U|=17194, max Shapley err 1.1e-16
+   lin_typ   55.7% [  48.8,  63.2]   nonlin_typ    0.0% [   0.0,   0.0]   shared   -6.8% [  -8.6,  -5.1]   eps   40.7% [  33.2,  47.7]   outside   10.4% [   9.4,  11.6]
+
+olmo7b sft->dpo: loss +0.2550 nats, |U|=12387, max Shapley err 8.0e-17
+   lin_typ  103.5% [  95.1, 112.3]   nonlin_typ    0.0% [   0.0,   0.0]   shared  -75.1% [ -80.8, -69.6]   eps   63.4% [  56.4,  70.8]   outside    8.2% [   6.5,   9.9]
+
+tulu base->sft: loss +0.3073 nats, |U|=17965, max Shapley err 1.2e-16
+   lin_typ   67.0% [  59.8,  75.1]   nonlin_typ    0.0% [   0.0,   0.0]   shared   -3.5% [  -7.4,  -0.2]   eps   26.5% [  17.9,  34.3]   outside   10.0% [   8.5,  11.9]
+
+tulu sft->dpo: loss +0.3989 nats, |U|=14623, max Shapley err 1.0e-16
+   lin_typ   95.1% [  87.3, 102.7]   nonlin_typ    0.0% [   0.0,   0.0]   shared  -49.2% [ -52.8, -45.7]   eps   39.8% [  33.0,  46.6]   outside   14.4% [  13.1,  15.7]
+
+olmo13b base->sft: loss +0.1673 nats, |U|=15720, max Shapley err 1.1e-16
+   lin_typ   53.2% [  41.4,  64.9]   nonlin_typ    0.0% [   0.0,   0.0]   shared    3.9% [   1.5,   6.3]   eps   33.0% [  21.2,  44.7]   outside    9.8% [   8.8,  11.1]
+
+olmo13b sft->dpo: loss +0.2024 nats, |U|=13602, max Shapley err 6.2e-17
+   lin_typ  112.6% [ 105.4, 120.6]   nonlin_typ    0.0% [   0.0,   0.0]   shared  -37.5% [ -42.3, -33.2]   eps   13.8% [   5.7,  21.7]   outside   11.1% [  10.3,  11.9]

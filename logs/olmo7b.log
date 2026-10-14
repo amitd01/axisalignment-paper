@@ -1,0 +1,21 @@
+== dl allenai/OLMo-2-1124-7B Tue Oct 13 17:46:59 IST 2026
+OK dl allenai/OLMo-2-1124-7B Tue Oct 13 18:31:26 IST 2026
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights:   0%|          | 1/355 [00:00<00:47,  7.43it/s]Loading weights:  17%|█▋        | 59/355 [00:00<00:00, 302.22it/s]Loading weights:  26%|██▋       | 94/355 [00:00<00:00, 279.49it/s]Loading weights:  35%|███▌      | 125/355 [00:00<00:02, 109.22it/s]Loading weights:  41%|████      | 146/355 [00:01<00:02, 79.28it/s] Loading weights:  45%|████▌     | 161/355 [00:02<00:04, 44.80it/s]Loading weights:  48%|████▊     | 172/355 [00:02<00:04, 42.30it/s]Loading weights:  51%|█████     | 181/355 [00:02<00:04, 39.41it/s]Loading weights:  54%|█████▎    | 190/355 [00:03<00:04, 37.59it/s]Loading weights:  56%|█████▌    | 199/355 [00:03<00:03, 42.34it/s]Loading weights:  58%|█████▊    | 206/355 [00:03<00:04, 30.13it/s]Loading weights:  69%|██████▉   | 245/355 [00:03<00:01, 67.80it/s]Loading weights:  73%|███████▎  | 259/355 [00:04<00:02, 44.15it/s]Loading weights:  76%|███████▌  | 269/355 [00:04<00:02, 41.21it/s]Loading weights:  78%|███████▊  | 278/355 [00:05<00:01, 38.56it/s]Loading weights:  81%|████████  | 287/355 [00:05<00:01, 40.83it/s]Loading weights:  83%|████████▎ | 294/355 [00:05<00:01, 36.29it/s]Loading weights:  85%|████████▍ | 300/355 [00:05<00:01, 31.14it/s]Loading weights:  88%|████████▊ | 311/355 [00:06<00:01, 39.28it/s]Loading weights:  89%|████████▉ | 317/355 [00:06<00:00, 41.85it/s]Loading weights:  91%|█████████ | 323/355 [00:06<00:01, 31.23it/s]Loading weights:  94%|█████████▎| 332/355 [00:06<00:00, 38.86it/s]Loading weights:  95%|█████████▌| 338/355 [00:07<00:00, 30.96it/s]Loading weights:  97%|█████████▋| 344/355 [00:07<00:00, 27.16it/s]Loading weights:  99%|█████████▉| 353/355 [00:07<00:00, 35.20it/s]Loading weights: 100%|██████████| 355/355 [00:07<00:00, 47.62it/s]
+allenai/OLMo-2-1124-7B: params ['torch.bfloat16'] on mps
+saved olmo7b_base: (36, 100352) vocab=100352 on mps
+== dl allenai/OLMo-2-1124-7B-SFT Tue Oct 13 18:31:45 IST 2026
+OK dl allenai/OLMo-2-1124-7B-SFT Tue Oct 13 18:51:19 IST 2026
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights: 100%|██████████| 355/355 [00:00<00:00, 80242.40it/s]
+allenai/OLMo-2-1124-7B-SFT: params ['torch.bfloat16'] on mps
+saved olmo7b_sft: (36, 100352) vocab=100352 on mps
+== dl allenai/OLMo-2-1124-7B-DPO Tue Oct 13 18:51:25 IST 2026
+OK dl allenai/OLMo-2-1124-7B-DPO Tue Oct 13 19:11:56 IST 2026
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights: 100%|██████████| 355/355 [00:00<00:00, 98804.11it/s]
+allenai/OLMo-2-1124-7B-DPO: params ['torch.bfloat16'] on mps
+saved olmo7b_dpo: (36, 100352) vocab=100352 on mps
+== dl allenai/OLMo-2-1124-7B-Instruct Tue Oct 13 19:12:01 IST 2026
+OK dl allenai/OLMo-2-1124-7B-Instruct Tue Oct 13 19:31:44 IST 2026
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights: 100%|██████████| 355/355 [00:00<00:00, 41235.65it/s]
+allenai/OLMo-2-1124-7B-Instruct: params ['torch.bfloat16'] on mps
+saved olmo7b_inst: (36, 100352) vocab=100352 on mps
+OLMO7B_DONE

@@ -1,0 +1,6 @@
+ratio = decontam median GPT-2 ppl / temperature-frontier ppl at the same Jaccard (bootstrap over 5 prompts)
+  G005: jac 0.0778  ratio 1.21  95% CI [0.79, 1.33]  (in-range draws 0.52)  -> temperature-like
+  G010: jac 0.0630  ratio 1.05  95% CI [0.71, 1.53]  (in-range draws 1.00)  -> inconclusive
+  G020: jac 0.0423  ratio 1.62  95% CI [0.37, 4.06]  (in-range draws 1.00)  -> inconclusive
+  G030: jac 0.0231  ratio 1.59  95% CI [0.57, 4.02]  (in-range draws 1.00)  -> inconclusive
+  G050: jac 0.0043  ratio 1.05  95% CI [0.48, 1.85]  (in-range draws 0.92)  -> inconclusive

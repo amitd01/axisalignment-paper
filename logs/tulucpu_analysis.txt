@@ -1,0 +1,91 @@
+param dtypes: {'base': 'torch.bfloat16', 'sft': 'torch.bfloat16', 'dpo': 'torch.bfloat16', 'inst': 'torch.bfloat16'}
+token-ID identity: OK across ['base', 'sft', 'dpo', 'inst'] (input IDs checked; vocab=128256)
+vocab widths: {'base': 128256, 'sft': 128264, 'dpo': 128264, 'inst': 128264} -> common V=128,256
+  base  mass on IDs >= V: max 0.00e+00  mean 0.00e+00
+  sft   mass on IDs >= V: max 6.74e-06  mean 4.60e-07
+  dpo   mass on IDs >= V: max 5.73e-06  mean 4.33e-07
+  inst  mass on IDs >= V: max 6.43e-06  mean 4.33e-07
+============================================================================================
+psi MEASUREMENT -- tulucpu: ['meta-llama/Llama-3.1-8B', 'allenai/Llama-3.1-Tulu-3-8B-SFT', 'allenai/Llama-3.1-Tulu-3-8B-DPO', 'allenai/Llama-3.1-Tulu-3-8B']
+36 prompts | vocab 128,256 | psi* threshold from theory: 0.71 - 0.83
+============================================================================================
+
+### base -> SFT   (instruction tuning)
+  region          mean r      sd               95% CI        verdict
+  top-10         +0.2095  0.2835 [+0.1177,+0.3007]     BELOW psi*
+  top-50         +0.1981  0.1518 [+0.1484,+0.2468]     BELOW psi*
+  top-100        +0.2073  0.1316 [+0.1647,+0.2508]     BELOW psi*
+  top-1000       +0.1311  0.1019 [+0.0970,+0.1635]     BELOW psi*
+  plausible      +0.0798  0.0907 [+0.0496,+0.1090]     BELOW psi*
+  weighted       +0.3906  0.2295 [+0.3139,+0.4645]     BELOW psi*
+  entropy: 3.727 -> 3.217 nats  (drop +0.510, 95% CI [+0.394,+0.628])
+  branching: 72.3 -> 43.5 (-39.8%)
+
+### SFT -> DPO   (TRUE preference delta)
+  region          mean r      sd               95% CI        verdict
+  top-10         +0.1129  0.3510 [-0.0043,+0.2261]     BELOW psi*
+  top-50         +0.2771  0.2061 [+0.2086,+0.3436]     BELOW psi*
+  top-100        +0.2751  0.1799 [+0.2138,+0.3318]     BELOW psi*
+  top-1000       +0.2355  0.1214 [+0.1913,+0.2711]     BELOW psi*
+  plausible      +0.2209  0.0830 [+0.1930,+0.2475]     BELOW psi*
+  weighted       +0.3962  0.3199 [+0.2845,+0.4949]     BELOW psi*
+  entropy: 3.217 -> 2.818 nats  (drop +0.399, 95% CI [+0.272,+0.556])
+  branching: 43.5 -> 32.0 (-26.4%)
+
+### DPO -> Instruct   (RLVR stage)
+  region          mean r      sd               95% CI        verdict
+  top-10         +0.1658  0.3710 [+0.0424,+0.2836]     BELOW psi*
+  top-50         +0.2383  0.1384 [+0.1921,+0.2819]     BELOW psi*
+  top-100        +0.2109  0.1259 [+0.1702,+0.2518]     BELOW psi*
+  top-1000       +0.1430  0.0936 [+0.1108,+0.1719]     BELOW psi*
+  plausible      +0.1510  0.0752 [+0.1262,+0.1750]     BELOW psi*
+  weighted       +0.3419  0.2965 [+0.2419,+0.4344]     BELOW psi*
+  entropy: 2.818 -> 2.757 nats  (drop +0.061, 95% CI [+0.043,+0.080])
+  branching: 32.0 -> 30.3 (-5.3%)
+
+### base -> Instruct   (full pipeline)
+  region          mean r      sd               95% CI        verdict
+  top-10         +0.2226  0.2961 [+0.1267,+0.3173]     BELOW psi*
+  top-50         +0.2475  0.1662 [+0.1921,+0.3008]     BELOW psi*
+  top-100        +0.2595  0.1442 [+0.2110,+0.3064]     BELOW psi*
+  top-1000       +0.1904  0.1162 [+0.1489,+0.2253]     BELOW psi*
+  plausible      +0.1457  0.0939 [+0.1139,+0.1754]     BELOW psi*
+  weighted       +0.4573  0.2536 [+0.3687,+0.5343]     BELOW psi*
+  entropy: 3.727 -> 2.757 nats  (drop +0.970, 95% CI [+0.764,+1.177])
+  branching: 72.3 -> 30.3 (-58.0%)
+
+============================================================================================
+SHARE OF TOTAL ENTROPY LOSS BY STAGE  (total +0.970 nats, branching 72.3 -> 30.3, -58.0%)
+============================================================================================
+  SFT         drop +0.5098 nats   share   52.5%   95% CI [  44.2%,   59.8%]
+  DPO         drop +0.3992 nats   share   41.1%   95% CI [  33.1%,   50.7%]
+  RLVR/final  drop +0.0615 nats   share    6.3%   95% CI [   4.2%,    8.9%]
+
+============================================================================================
+REGISTER DIAGNOSTIC -- probability mass on special tokens, per stage (mean over prompts)
+============================================================================================
+  base  (b) excluded IDs>=128256: mean 0.00e+00 max 0.00e+00   (c) special IDs [128000,128256): mean 6.93e-06 max 1.07e-04  top ids [128001, 128127, 128162]
+  sft   (b) excluded IDs>=128256: mean 4.60e-07 max 6.74e-06   (c) special IDs [128000,128256): mean 1.01e-05 max 2.45e-04  top ids [128001, 128254, 128169]
+  dpo   (b) excluded IDs>=128256: mean 4.33e-07 max 5.73e-06   (c) special IDs [128000,128256): mean 6.56e-06 max 1.63e-04  top ids [128001, 128127, 128092]
+  inst  (b) excluded IDs>=128256: mean 4.33e-07 max 6.43e-06   (c) special IDs [128000,128256): mean 5.78e-06 max 1.40e-04  top ids [128001, 128127, 128162]
+
+============================================================================================
+BY TASK FAMILY -- psi (plausible set) and entropy drop, per delta
+============================================================================================
+family                   SFT        DPO   Instruct   Instruct
+divergent             +0.046     +0.140     +0.099     +0.098
+narrative             +0.128     +0.269     +0.187     +0.220
+explanatory           +0.139     +0.255     +0.118     +0.183
+argumentative         +0.056     +0.198     +0.152     +0.111
+problem_solving       +0.090     +0.233     +0.171     +0.148
+descriptive           +0.019     +0.230     +0.179     +0.113
+
+family                dH SFT     dH DPO  dH Instru  dH Instru
+divergent             +0.516     +0.482     +0.097     +1.094
+narrative             +0.385     +0.430     +0.070     +0.885
+explanatory           +0.690     +0.469     +0.081     +1.240
+argumentative         +0.334     +0.032     +0.083     +0.448
+problem_solving       +0.623     +0.657     +0.000     +1.281
+descriptive           +0.511     +0.325     +0.037     +0.874
+
+saved -> /Users/amitdas/claude/Repos/alignment-axis/results/results_psi_tulucpu.json

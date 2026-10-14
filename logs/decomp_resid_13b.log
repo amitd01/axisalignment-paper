@@ -1,0 +1,6 @@
+
+olmo13b base->sft: loss +0.1673 nats, |U|=15720, max Shapley err 2.0e-16
+   lin_typ   28.2% [  19.5,  36.5]   nonlin_typ   23.3% [   8.7,  38.6]   shared    5.9% [   3.7,   8.2]   eps   34.2% [  24.2,  44.5]   outside    8.4% [   7.7,   9.4]
+
+olmo13b sft->dpo: loss +0.2024 nats, |U|=13602, max Shapley err 1.0e-16
+   lin_typ   78.9% [  67.8,  90.1]   nonlin_typ   33.8% [  22.5,  46.1]   shared  -36.6% [ -41.4, -32.4]   eps   13.7% [   7.0,  20.3]   outside   10.2% [   9.5,  11.0]

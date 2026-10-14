@@ -25,8 +25,7 @@ attribution of each stage's entropy change assigns that same component **nearly
 all (87–139%) of instruction tuning's entropy loss and all (102–291%) of the
 preference stage's**, under the pre-registered weighted fit. Comparing like with
 like, a component accounting for about 30% of the shift at most carries nearly all
-of its entropy cost. The part of the shift that removes diversity is not the part
-that is large.
+of its entropy cost. The diversity cost is carried by a small part of the shift.
 
 **The larger of the two components we measured is a shared direction.** Writing ρ_reg for the correlation between
 a stage's per-token shift and the mean shift on *other* prompts
@@ -272,7 +271,7 @@ We also report the partial correlation of δ with the shared direction controlli
 for log p_ref, which asks whether the shared direction is typicality under another
 name.
 
-### 4.2 The shared shift dominates the plausible set
+### 4.2 The shared shift exceeds typicality across the plausible set
 
 Pre-registered test, base → SFT, plausible region (ref p > 10⁻⁶), base-written
 continuations:
@@ -309,7 +308,7 @@ promote paragraph-break tokens instead. Hedges (*effectively*, *essentially*,
 *clearly*) are top-ranked only in the 1B.
 
 Token lists are per delta and per model; the stable core across all four is
-punctuation up, first and second person down.
+punctuation up, second person down.
 
 ### 4.4 A related quantity transfers across lineage
 
@@ -585,7 +584,8 @@ delta to a large base model. DeRa proves the geometric-mixture structure and swe
 sampling, diverse personas, chain-of-thought differentiation. These require the
 user to want diversity, which matters given that the collective-diversity loss
 Doshi and Hauser identify is a social dilemma no individual has an incentive to
-solve.
+solve. Related work on preference collapse (Xiao et al., 2024) shows minority
+preferences being virtually disregarded under standard alignment objectives.
 
 **Stage-resolved analysis.** Kirk et al. compare SFT against RLHF on generalisation
 and diversity but do not decompose a single pipeline's entropy budget across its
@@ -617,25 +617,31 @@ a stage comparison that reports the position convention of §2.
 
 ## 10. Conclusion
 
-Across four pipelines, the part of the alignment shift that removes diversity is
-not the part that is large. A typicality-aligned component accounting for about 30%
-of a stage's shift at most — and under an unweighted fit, at most 7% — carries
-nearly all of its entropy loss, at both stages, in every model measured. Larger
-than that component, though itself a minority of the shift, is a shared, largely
-context-independent direction: measurable at every stage of every model, surviving
-a partial correlation against reference typicality, with null controls at 0.008 and
-0.004. Most of each stage's shift is accounted for by neither axis, and we do not
-characterise what the remainder is.
+Across four pipelines, alignment's diversity cost is carried by a small part of the
+alignment shift. A typicality-aligned component accounting for about 30% of a
+stage's shift at most — and under an unweighted fit, at most 7% — carries nearly
+all of its entropy loss, at both stages, in every model measured. Larger than that
+component, though itself a minority of the shift, is a shared direction: measurable
+at every stage of every model, surviving a partial correlation against reference
+typicality, with null controls at 0.008 and 0.004. Its context-invariance varies
+with scale and is weak at the smallest — ρ_reg = 0.09 at the 1B against 0.26–0.45
+at 7–13B — so "context-independent" is a description of the larger models, not of
+all four. Most of each stage's shift is accounted for by neither axis, we do not
+characterise what the remainder is, and we do not claim it is inert: an exact
+decomposition assigns the typicality component nearly all of the entropy loss, but
+that is an attribution of the loss, not a demonstration that nothing else moves it.
 
-The two findings together offer a reading of the 1B decoding-time results: an
-operator on the reference axis acts on the axis that carries the entropy, and at
-7–8B the entropy-relevant part of the preference shift is already close to a
-temperature, so there is little for such an operator to recover that temperature
-does not. It is only a reading. The same operator beat temperature threefold at
-135M, no decoding-time intervention was run above 1B, and the 1B null is
-unexplained (§6.3). They also raise a question this work does not answer. The field
-measures alignment's effect through diversity metrics, and most of what alignment
-does to the next-token distribution does not appear in them.
+Those findings suggest a hypothesis about larger scales, which this work does not
+test: an operator on the reference axis acts on the axis that carries the entropy,
+and at 7–8B the entropy-relevant part of the preference shift is already close to a
+temperature, so there would be little for such an operator to recover that
+temperature does not. It is a hypothesis and not an account of what we measured. No
+decoding-time intervention was run above 1B. It cannot be the explanation of the 1B
+null, where the preference stage's β ≈ 0 and λ acts mostly on instruction tuning
+(§6.3); that null stays unexplained, and the same operator beat temperature
+threefold at 135M. The results also raise a question this work does not answer. The
+field measures alignment's effect through diversity metrics, and most of what
+alignment does to the next-token distribution does not appear in them.
 
 Underneath sits a methodological result we did not expect to be consequential. The
 same Tülu-3-8B checkpoints yield preference-stage shares of 29% and 53% depending
@@ -661,6 +667,7 @@ reproducible without stating it.
 | `exp1d_misspec.py` | the withdrawn ψ\* threshold (§7) |
 | `exp1e_peakedness.py` | the peakedness probe that withdrew it |
 | `pilot135m_port/` | 135M γ sweep and β measurement |
+| `logs/` | the run scripts and evaluation outputs behind the reported numbers: the 135M frontier, the β measurement, the lineage statistic, the pre-registered 13B evaluation, the R² intervals and the whose-text offset check |
 
 Six pre-registrations, each hashed before its data existed, are released with the code
 at https://github.com/amitd01/axisalignment-paper: the 13B scale test, the register test, the lineage test, the entropy

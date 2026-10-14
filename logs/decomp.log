@@ -1,0 +1,54 @@
+
+olmo base->sft: entropy loss +0.2814 nats, median head size 3 tokens, max Shapley sum error 1.2e-16
+   REGION     reg_head   14.9% [  11.9,  17.6]   reg_body   95.0% [  91.0,  99.9]   reg_out   -9.9% [ -12.8,  -7.5]
+   UNWEIGHTED u_typ  -29.2% [ -41.6, -18.3]   u_shared   -4.9% [  -6.6,  -3.2]   u_resid  144.4% [ 131.0, 160.0]   u_out  -10.3% [ -13.3,  -7.8]
+   WEIGHTED   w_typ  139.0% [ 131.7, 147.5]   w_shared    2.1% [  -1.2,   5.7]   w_resid  -30.6% [ -37.7, -24.1]   w_out  -10.5% [ -13.7,  -8.0]
+   weighted typ - shared: +137.0 pts [+128.5, +146.4]
+
+olmo sft->dpo: entropy loss +0.1176 nats, median head size 2 tokens, max Shapley sum error 8.1e-17
+   REGION     reg_head   14.8% [  11.0,  17.7]   reg_body   85.9% [  82.7,  90.1]   reg_out   -0.7% [  -1.6,   0.2]
+   UNWEIGHTED u_typ  152.8% [ 126.2, 187.9]   u_shared -208.6% [-257.1,-172.6]   u_resid  156.5% [ 141.8, 175.4]   u_out   -0.8% [  -1.8,   0.2]
+   WEIGHTED   w_typ  290.5% [ 257.1, 335.8]   w_shared -236.2% [-291.4,-195.1]   w_resid   45.8% [  37.0,  57.0]   w_out   -0.2% [  -1.3,   0.8]
+   weighted typ - shared: +526.7 pts [+452.3, +627.0]
+
+olmo dpo->inst: entropy loss +0.0270 nats, median head size 2 tokens, max Shapley sum error 1.8e-17
+   REGION     reg_head   25.2% [  23.0,  27.3]   reg_body   65.7% [  63.3,  67.9]   reg_out    9.0% [   8.0,  10.4]
+   UNWEIGHTED u_typ  -20.1% [ -41.5,  -5.3]   u_shared   97.4% [  76.2, 129.1]   u_resid   13.7% [  -1.3,  24.1]   u_out    9.0% [   8.1,  10.4]
+   WEIGHTED   w_typ    4.0% [ -26.4,  23.8]   w_shared   84.2% [  65.3, 112.8]   w_resid    2.8% [   1.6,   4.3]   w_out    9.0% [   8.1,  10.4]
+   weighted typ - shared: -80.2 pts [-139.1, -41.5]
+
+olmo7b base->sft: entropy loss +0.4600 nats, median head size 2 tokens, max Shapley sum error 1.1e-16
+   REGION     reg_head   23.0% [  22.0,  23.9]   reg_body   75.5% [  74.5,  76.6]   reg_out    1.5% [   1.2,   1.8]
+   UNWEIGHTED u_typ   27.4% [  24.2,  30.6]   u_shared   -3.7% [  -4.7,  -2.8]   u_resid   74.5% [  71.1,  77.8]   u_out    1.8% [   1.5,   2.1]
+   WEIGHTED   w_typ   94.5% [  92.7,  96.4]   w_shared   -3.3% [  -5.3,  -1.4]   w_resid    5.5% [   3.1,   7.9]   w_out    3.3% [   2.9,   3.7]
+   weighted typ - shared: +97.9 pts [+95.1, +100.8]
+
+olmo7b sft->dpo: entropy loss +0.2550 nats, median head size 2 tokens, max Shapley sum error 7.6e-17
+   REGION     reg_head   20.7% [  19.3,  22.0]   reg_body   80.1% [  78.0,  82.3]   reg_out   -0.7% [  -2.0,   0.4]
+   UNWEIGHTED u_typ   60.4% [  54.1,  66.9]   u_shared  -47.4% [ -51.4, -43.6]   u_resid   87.4% [  81.2,  94.6]   u_out   -0.5% [  -2.0,   0.9]
+   WEIGHTED   w_typ  128.0% [ 124.4, 132.2]   w_shared  -55.3% [ -61.0, -50.1]   w_resid   25.7% [  22.1,  29.3]   w_out    1.6% [   0.1,   3.0]
+   weighted typ - shared: +183.4 pts [+174.9, +192.8]
+
+olmo7b dpo->inst: entropy loss +0.0496 nats, median head size 2 tokens, max Shapley sum error 1.3e-17
+   REGION     reg_head   25.0% [  23.6,  26.2]   reg_body   71.7% [  70.4,  73.2]   reg_out    3.3% [   3.1,   3.5]
+   UNWEIGHTED u_typ   36.8% [  33.4,  40.3]   u_shared   -4.1% [  -5.7,  -2.6]   u_resid   64.1% [  60.9,  67.1]   u_out    3.3% [   3.1,   3.5]
+   WEIGHTED   w_typ   90.3% [  87.7,  92.7]   w_shared   -2.0% [  -6.2,   3.2]   w_resid    8.5% [   5.4,  11.2]   w_out    3.2% [   2.8,   3.5]
+   weighted typ - shared: +92.3 pts [+84.7, +98.6]
+
+tulu base->sft: entropy loss +0.3073 nats, median head size 2 tokens, max Shapley sum error 8.8e-17
+   REGION     reg_head   23.0% [  21.9,  24.0]   reg_body   74.7% [  73.7,  75.8]   reg_out    2.3% [   2.1,   2.5]
+   UNWEIGHTED u_typ   33.4% [  28.5,  38.6]   u_shared    2.9% [   2.0,   3.9]   u_resid   61.2% [  55.4,  66.8]   u_out    2.4% [   2.2,   2.6]
+   WEIGHTED   w_typ   96.6% [  94.5,  98.8]   w_shared   -0.7% [  -2.6,   1.2]   w_resid    1.2% [  -0.3,   2.7]   w_out    2.9% [   2.7,   3.1]
+   weighted typ - shared: +97.2 pts [+93.5, +101.2]
+
+tulu sft->dpo: entropy loss +0.3989 nats, median head size 2 tokens, max Shapley sum error 9.2e-17
+   REGION     reg_head   22.7% [  22.2,  23.2]   reg_body   74.4% [  73.7,  75.0]   reg_out    2.9% [   2.7,   3.2]
+   UNWEIGHTED u_typ   68.8% [  64.1,  73.7]   u_shared  -28.2% [ -30.5, -26.1]   u_resid   54.1% [  50.0,  58.1]   u_out    5.3% [   4.9,   5.7]
+   WEIGHTED   w_typ  105.2% [ 103.9, 106.3]   w_shared  -27.6% [ -30.6, -24.7]   w_resid   14.7% [  12.2,  17.5]   w_out    7.7% [   7.0,   8.4]
+   weighted typ - shared: +132.7 pts [+129.5, +136.0]
+
+tulu dpo->inst: entropy loss +0.0492 nats, median head size 2 tokens, max Shapley sum error 1.5e-17
+   REGION     reg_head   24.7% [  23.4,  25.9]   reg_body   71.8% [  70.6,  73.2]   reg_out    3.4% [   3.2,   3.7]
+   UNWEIGHTED u_typ   50.7% [  46.8,  55.0]   u_shared   -2.6% [  -4.9,  -0.4]   u_resid   48.5% [  43.4,  53.0]   u_out    3.4% [   3.2,   3.7]
+   WEIGHTED   w_typ   91.0% [  89.2,  92.9]   w_shared   -0.3% [  -2.4,   1.6]   w_resid    5.9% [   5.2,   6.6]   w_out    3.5% [   3.2,   3.7]
+   weighted typ - shared: +91.2 pts [+87.8, +95.2]

@@ -1,0 +1,4 @@
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 11060.85it/s]
+meta-llama/Llama-3.1-8B: params ['torch.bfloat16'] on cpu
+saved tulu/basecpu: A 36 rows, B 6908 rows, excluded mass max 0.00e+00
+TULU_NULL_DONE

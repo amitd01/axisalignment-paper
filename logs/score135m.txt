@@ -1,0 +1,110 @@
+Loading weights:   0%|          | 0/148 [00:00<?, ?it/s]Loading weights: 100%|██████████| 148/148 [00:00<00:00, 31053.38it/s]
+[transformers] `loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+====================================================================================================
+EXPERIMENT 3 -- RESULTS
+SmolLM2-135M (base) / SmolLM2-135M-Instruct (aligned), 5 prompts x 8 samples x 32 tok
+Judge: GPT-2 (independent family and tokeniser). top-p=0.95 held constant.
+====================================================================================================
+condition                              dist-2  jaccard     ttr  selfrep   GPT2ppl
+----------------------------------------------------------------------------------------------------
+A  temperature  T=1.00                  0.967    0.078   0.892    0.000      65.0
+A  temperature  T=1.10                  0.981    0.060   0.909    0.001     110.4
+A  temperature  T=1.20                  0.988    0.045   0.926    0.001     178.7
+A  temperature  T=1.30                  0.990    0.035   0.961    0.000     454.9
+A  temperature  T=1.60                  1.000    0.011   0.988    0.000    7624.9
+A  temperature  T=2.00                  1.000    0.002   0.998    0.000   36703.8
+C  decontam     g=0.05                  0.974    0.078   0.913    0.004      79.4
+C  decontam     g=0.10                  0.969    0.063   0.916    0.000     105.6
+C  decontam     g=0.20                  0.993    0.042   0.942    0.000     365.8
+C  decontam     g=0.30                  0.994    0.023   0.968    0.000    1948.7
+C  decontam     g=0.50                  0.996    0.004   0.994    0.000   17224.7
+
+====================================================================================================
+MATCHED-DIVERSITY COMPARISON (interpolating each operator's curve)
+Lower Jaccard = more diverse. At equal Jaccard, lower ppl = better operator.
+====================================================================================================
+  tgt jac     A temp    B lambda    C decon     D ctrl          winner
+    0.100        n/a         n/a        n/a        n/a               -
+    0.075       72.8         n/a       84.4        n/a     temperature
+    0.060      110.9         n/a      143.3        n/a     temperature
+    0.050      156.3         n/a      268.7        n/a     temperature
+    0.040      314.7         n/a      552.7        n/a     temperature
+    0.035      448.7         n/a      966.4        n/a     temperature
+    0.025     3389.4         n/a     1793.6        n/a   decontaminate
+    0.015     6394.1         n/a     8527.2        n/a     temperature
+
+saved -> results_exp3_scored.json
+
+====================================================================================================
+SAMPLE OUTPUT (prompt 1, first 2 samples per condition)
+====================================================================================================
+
+A  temperature  T=1.00
+   | serve as an outdoor dinning hall. Some restaurants are using brick ovens to serve a dining area.
+In other exam
+   | fuel inefficient electric cars.
+
+ A) To steal business and create something else.
+ B) To fund school lunches w
+
+A  temperature  T=1.10
+   | serve as an overnight gatepost to a medieval monastery on a hot, dry summer day. 
+OPTIONS:
+  * 
+A. Train stati
+   | fuel inefficient electric cars.
+
+ A) To steal business and create something else.
+
+B) To break walls
+C) To lif
+
+A  temperature  T=1.20
+   | serve homemade ratatagu where rats are "put to bed" (contracted with terrariums).
+www.happymusic12.com/christ
+   | fuel inefficient electric cars.
+
+ A) To steal business and create something else.
+
+B) To break walls
+B) To upg
+
+A  temperature  T=1.30
+   | serve homemade ratatagu where rats are "put to bed" (contracted with territar) in an inviting bed and scoop it
+   | fuel inefficient electric furnace systems. Many of our Edison standard leaf blowers, previously test fixtures,
+
+A  temperature  T=1.60
+   | serve homemade ratatagu where rats addressed referees balls are accustomed to eject collected dopamine ' instr
+   | people sleep at-home dotels or bath terrarium chat, if it decomposes inside. It got off elders prejudices, biz
+
+A  temperature  T=2.00
+   | serve homemade ratatagu where rats addressed pink kneel OutsideKaBer
+
+ wrapsheet field SupSimSchearerConnect C
+   | people sleep magic dancing QueensfeBF中 SpinaladoesNI Mexico Section dizziness refers unanswered cvan Andrea br
+
+C  decontam     g=0.05
+   | serve as an outdoor beer garden with a giant coffee bar, a large paper fireplace, and an outdoor children's ca
+   | carry sacred relics or artifacts. Bricks often have protected collections or inscriptions attached to them tha
+
+C  decontam     g=0.10
+   | serve up refreshing cocktails or spirits. If you'd prefer something to head out, the rock's incredibly versati
+   | display logs, walls, or floor-standing caps. Some builders would even use these logs to display stuttering ite
+
+C  decontam     g=0.20
+   | serve roasted dinner pies dipped in caramel.
+user
+Explain Accent language Stars Decide the lotion shelf name s
+   | support spikes and brake pads. For the spike thrower (or pushover shovel), you can also use this location in y
+
+C  decontam     g=0.30
+   | serve the whiskey on gills arrangement: Falcantico Son Understated starting with both bees and a detailed, lav
+   | settle underground interviews between immigration officers to prevent deportation opportunities open to certai
+
+C  decontam     g=0.50
+   | serve pie last night has improved sales?**
+user
+Explain StarkXX decompositionleton annotating exemplary implem
+   | lanterns originating getting everywhere antiques degree drains.
+assistant
+That bow bracket outloud's very corr

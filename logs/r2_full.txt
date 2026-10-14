@@ -1,0 +1,8 @@
+olmo    base->sft   unw lin+nonlin R2 0.7% [0.7, 0.8]   weighted linear R2 7.8% [7.1, 8.7]   n=6799
+olmo    sft->dpo   unw lin+nonlin R2 1.1% [1.0, 1.2]   weighted linear R2 7.6% [7.0, 8.3]   n=6809
+olmo7b  base->sft   unw lin+nonlin R2 1.6% [1.4, 1.8]   weighted linear R2 19.2% [16.9, 21.4]   n=6823
+olmo7b  sft->dpo   unw lin+nonlin R2 3.6% [3.3, 3.9]   weighted linear R2 20.8% [19.0, 22.8]   n=6789
+tulu    base->sft   unw lin+nonlin R2 1.4% [1.3, 1.6]   weighted linear R2 14.8% [13.2, 16.8]   n=6891
+tulu    sft->dpo   unw lin+nonlin R2 5.9% [5.4, 6.4]   weighted linear R2 30.4% [28.0, 33.4]   n=6862
+olmo13b base->sft   unw lin+nonlin R2 2.2% [1.8, 2.6]   weighted linear R2 13.6% [11.7, 15.8]   n=6833
+olmo13b sft->dpo   unw lin+nonlin R2 7.1% [6.4, 7.9]   weighted linear R2 20.9% [18.3, 24.1]   n=6821
