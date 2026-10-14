@@ -658,7 +658,8 @@ reproducible without stating it.
 | `check_tokenizers.py` | token-ID-level tokeniser identity verification |
 | `grind.py`, `matched6.py` | generation sweep and matched-diversity scoring |
 | `gen_scale.py` (mode `ctrl`) | shuffled-delta direction control |
-| `exp1e_peakedness.py` | peakedness probe behind the withdrawn threshold (§7) |
+| `exp1d_misspec.py` | the withdrawn ψ\* threshold (§7) |
+| `exp1e_peakedness.py` | the peakedness probe that withdrew it |
 | `pilot135m_port/` | 135M γ sweep and β measurement |
 
 Six pre-registrations, each hashed before its data existed, are released with the code

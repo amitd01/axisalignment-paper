@@ -81,7 +81,8 @@ code/                    analysis and generation
   score_scale.py         scores the sweep
   grind.py               sweep driver
   matched.py, matched6.py  matched-diversity scoring
-  exp1e_peakedness.py    peakedness probe behind the withdrawn threshold (see below)
+  exp1d_misspec.py       the withdrawn psi* threshold (see "What did not work")
+  exp1e_peakedness.py    the peakedness probe that withdrew it
   prompts.py             the prompt set
   make_tables.py         builds the paper's tables from results/
   pilot135m_port/        135M gamma sweep and beta measurement
