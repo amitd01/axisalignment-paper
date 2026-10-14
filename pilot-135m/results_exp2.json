@@ -1,0 +1,513 @@
+{
+ "records": [
+  {
+   "text": "List some unusual uses for a brick. One ",
+   "pos": 7,
+   "n_tokens": 7895,
+   "r": 0.04938022919923005,
+   "r2": 0.0024384070357684915
+  },
+  {
+   "text": "List some unusual uses for a brick. One ",
+   "pos": 8,
+   "n_tokens": 8956,
+   "r": 0.1368516012275048,
+   "r2": 0.018728360758531997
+  },
+  {
+   "text": "List some unusual uses for a brick. One ",
+   "pos": 9,
+   "n_tokens": 2791,
+   "r": -0.040882392853456795,
+   "r2": 0.0016713700454243751
+  },
+  {
+   "text": "List some unusual uses for a brick. One ",
+   "pos": 10,
+   "n_tokens": 1869,
+   "r": 0.02318826540236063,
+   "r2": 0.000537695652370315
+  },
+  {
+   "text": "List some unusual uses for a brick. One ",
+   "pos": 11,
+   "n_tokens": 6361,
+   "r": 0.1596811816033741,
+   "r2": 0.02549807975824974
+  },
+  {
+   "text": "List some unusual uses for a brick. One ",
+   "pos": 12,
+   "n_tokens": 4802,
+   "r": 0.041217802452417386,
+   "r2": 0.0016989072390065046
+  },
+  {
+   "text": "List some unusual uses for a paperclip. ",
+   "pos": 8,
+   "n_tokens": 7174,
+   "r": 0.05862519945068136,
+   "r2": 0.0034369140106321706
+  },
+  {
+   "text": "List some unusual uses for a paperclip. ",
+   "pos": 9,
+   "n_tokens": 2593,
+   "r": 0.027835970334948335,
+   "r2": 0.0007748412444881237
+  },
+  {
+   "text": "List some unusual uses for a paperclip. ",
+   "pos": 10,
+   "n_tokens": 3921,
+   "r": 0.09227868936410154,
+   "r2": 0.008515356510756347
+  },
+  {
+   "text": "List some unusual uses for a paperclip. ",
+   "pos": 11,
+   "n_tokens": 2231,
+   "r": -0.03099205453432398,
+   "r2": 0.0009605074442585115
+  },
+  {
+   "text": "List some unusual uses for a paperclip. ",
+   "pos": 12,
+   "n_tokens": 1005,
+   "r": -0.07376387738699265,
+   "r2": 0.005441109607163286
+  },
+  {
+   "text": "List some unusual uses for a paperclip. ",
+   "pos": 13,
+   "n_tokens": 4424,
+   "r": 0.019985382126798745,
+   "r2": 0.00039941549875416673
+  },
+  {
+   "text": "Unusual uses for an old newspaper includ",
+   "pos": 5,
+   "n_tokens": 15425,
+   "r": 0.04433899971380604,
+   "r2": 0.0019659468956208922
+  },
+  {
+   "text": "Unusual uses for an old newspaper includ",
+   "pos": 6,
+   "n_tokens": 8078,
+   "r": 0.13320611842367794,
+   "r2": 0.01774386998550291
+  },
+  {
+   "text": "Unusual uses for an old newspaper includ",
+   "pos": 7,
+   "n_tokens": 13558,
+   "r": 0.2637648163842352,
+   "r2": 0.06957187836220932
+  },
+  {
+   "text": "Unusual uses for an old newspaper includ",
+   "pos": 8,
+   "n_tokens": 6695,
+   "r": 0.1558470320948118,
+   "r2": 0.024288297412761298
+  },
+  {
+   "text": "Unusual uses for an old newspaper includ",
+   "pos": 9,
+   "n_tokens": 890,
+   "r": 0.003941888467756904,
+   "r2": 1.553848469223487e-05
+  },
+  {
+   "text": "Unusual uses for an old newspaper includ",
+   "pos": 10,
+   "n_tokens": 5192,
+   "r": 0.07541668847774834,
+   "r2": 0.0056876769009497384
+  },
+  {
+   "text": "The most surprising thing about deep sea",
+   "pos": 5,
+   "n_tokens": 13159,
+   "r": 0.0899668970023883,
+   "r2": 0.008094042556238345
+  },
+  {
+   "text": "The most surprising thing about deep sea",
+   "pos": 6,
+   "n_tokens": 8981,
+   "r": 0.057809006597645,
+   "r2": 0.003341881243806563
+  },
+  {
+   "text": "The most surprising thing about deep sea",
+   "pos": 7,
+   "n_tokens": 2192,
+   "r": 0.1104772152710359,
+   "r2": 0.012205215094042808
+  },
+  {
+   "text": "The most surprising thing about deep sea",
+   "pos": 8,
+   "n_tokens": 1627,
+   "r": 0.10145740467618117,
+   "r2": 0.010293604963626388
+  },
+  {
+   "text": "The most surprising thing about deep sea",
+   "pos": 9,
+   "n_tokens": 2665,
+   "r": -0.004800671176509405,
+   "r2": 2.3046443744968192e-05
+  },
+  {
+   "text": "The most surprising thing about deep sea",
+   "pos": 10,
+   "n_tokens": 2649,
+   "r": 0.1334871380009076,
+   "r2": 0.017818816011673354
+  },
+  {
+   "text": "Write the opening line of a short story ",
+   "pos": 7,
+   "n_tokens": 3017,
+   "r": 0.14238898680628057,
+   "r2": 0.02027462356371914
+  },
+  {
+   "text": "Write the opening line of a short story ",
+   "pos": 8,
+   "n_tokens": 11944,
+   "r": 0.2531393400280482,
+   "r2": 0.06407952546983582
+  },
+  {
+   "text": "Write the opening line of a short story ",
+   "pos": 9,
+   "n_tokens": 9112,
+   "r": 0.2648654022819857,
+   "r2": 0.07015368132599811
+  },
+  {
+   "text": "Write the opening line of a short story ",
+   "pos": 10,
+   "n_tokens": 4011,
+   "r": 0.11855905604335995,
+   "r2": 0.014056249769892566
+  },
+  {
+   "text": "Write the opening line of a short story ",
+   "pos": 11,
+   "n_tokens": 4200,
+   "r": 0.18686727100707998,
+   "r2": 0.034919376973633474
+  },
+  {
+   "text": "Write the opening line of a short story ",
+   "pos": 12,
+   "n_tokens": 4857,
+   "r": 0.29691758265450435,
+   "r2": 0.08816005088939442
+  },
+  {
+   "text": "A good way to explain entropy to a child",
+   "pos": 7,
+   "n_tokens": 8600,
+   "r": 0.2527704923186046,
+   "r2": 0.06389292178698974
+  },
+  {
+   "text": "A good way to explain entropy to a child",
+   "pos": 8,
+   "n_tokens": 1582,
+   "r": 0.06866558626631965,
+   "r2": 0.004714962737297385
+  },
+  {
+   "text": "A good way to explain entropy to a child",
+   "pos": 9,
+   "n_tokens": 2170,
+   "r": 0.12152724254969707,
+   "r2": 0.014768870681732903
+  },
+  {
+   "text": "A good way to explain entropy to a child",
+   "pos": 10,
+   "n_tokens": 3056,
+   "r": 0.18268725358410212,
+   "r2": 0.03337463262210203
+  },
+  {
+   "text": "A good way to explain entropy to a child",
+   "pos": 11,
+   "n_tokens": 1653,
+   "r": 0.1379042584049559,
+   "r2": 0.019017584486220852
+  },
+  {
+   "text": "A good way to explain entropy to a child",
+   "pos": 12,
+   "n_tokens": 5666,
+   "r": 0.15783517644418016,
+   "r2": 0.024911942923165484
+  },
+  {
+   "text": "The main argument against the proposal i",
+   "pos": 3,
+   "n_tokens": 20928,
+   "r": 0.29060083881689935,
+   "r2": 0.08444884752108552
+  },
+  {
+   "text": "The main argument against the proposal i",
+   "pos": 4,
+   "n_tokens": 23528,
+   "r": 0.2709705659765707,
+   "r2": 0.07342504762566306
+  },
+  {
+   "text": "The main argument against the proposal i",
+   "pos": 5,
+   "n_tokens": 2405,
+   "r": 0.16456952393318708,
+   "r2": 0.027083128207595834
+  },
+  {
+   "text": "The main argument against the proposal i",
+   "pos": 6,
+   "n_tokens": 4527,
+   "r": 0.08731371963760592,
+   "r2": 0.007623685636954451
+  },
+  {
+   "text": "The main argument against the proposal i",
+   "pos": 7,
+   "n_tokens": 18249,
+   "r": 0.2170275108939848,
+   "r2": 0.0471009404848387
+  },
+  {
+   "text": "The main argument against the proposal i",
+   "pos": 8,
+   "n_tokens": 3494,
+   "r": 0.19705762540508728,
+   "r2": 0.0388317077302917
+  },
+  {
+   "text": "In my opinion, the best approach to this",
+   "pos": 7,
+   "n_tokens": 17425,
+   "r": 0.32018827201240097,
+   "r2": 0.10252052953428727
+  },
+  {
+   "text": "In my opinion, the best approach to this",
+   "pos": 8,
+   "n_tokens": 8541,
+   "r": 0.05922402629795347,
+   "r2": 0.0035074852909406846
+  },
+  {
+   "text": "In my opinion, the best approach to this",
+   "pos": 9,
+   "n_tokens": 1183,
+   "r": 0.15590792569166434,
+   "r2": 0.02430728129347753
+  },
+  {
+   "text": "In my opinion, the best approach to this",
+   "pos": 10,
+   "n_tokens": 793,
+   "r": 0.22560940590199427,
+   "r2": 0.05089960403145081
+  },
+  {
+   "text": "In my opinion, the best approach to this",
+   "pos": 11,
+   "n_tokens": 5180,
+   "r": 0.19915471720312378,
+   "r2": 0.03966260138425621
+  },
+  {
+   "text": "In my opinion, the best approach to this",
+   "pos": 12,
+   "n_tokens": 5036,
+   "r": 0.18164631650751706,
+   "r2": 0.03299538430074907
+  },
+  {
+   "text": "Describe a colour to someone who has nev",
+   "pos": 10,
+   "n_tokens": 2080,
+   "r": 0.20148616372331216,
+   "r2": 0.04059667417193735
+  },
+  {
+   "text": "Describe a colour to someone who has nev",
+   "pos": 11,
+   "n_tokens": 2163,
+   "r": -0.016692038465253068,
+   "r2": 0.000278624148125488
+  },
+  {
+   "text": "Describe a colour to someone who has nev",
+   "pos": 12,
+   "n_tokens": 6520,
+   "r": 0.05008169006299573,
+   "r2": 0.0025081756795659656
+  },
+  {
+   "text": "Describe a colour to someone who has nev",
+   "pos": 13,
+   "n_tokens": 3739,
+   "r": 0.23455139216888668,
+   "r2": 0.05501435556836288
+  },
+  {
+   "text": "Describe a colour to someone who has nev",
+   "pos": 14,
+   "n_tokens": 3256,
+   "r": 0.1992825615789462,
+   "r2": 0.03971353934946648
+  },
+  {
+   "text": "Describe a colour to someone who has nev",
+   "pos": 15,
+   "n_tokens": 4016,
+   "r": 0.17977888643149917,
+   "r2": 0.03232044800654987
+  },
+  {
+   "text": "The reason old bridges were built with a",
+   "pos": 4,
+   "n_tokens": 5889,
+   "r": 0.0002991453629979091,
+   "r2": 8.948794820315079e-08
+  },
+  {
+   "text": "The reason old bridges were built with a",
+   "pos": 5,
+   "n_tokens": 3254,
+   "r": 0.04511967768609787,
+   "r2": 0.002035785314497358
+  },
+  {
+   "text": "The reason old bridges were built with a",
+   "pos": 6,
+   "n_tokens": 9556,
+   "r": -0.0023910942110456465,
+   "r2": 5.717331526096003e-06
+  },
+  {
+   "text": "The reason old bridges were built with a",
+   "pos": 7,
+   "n_tokens": 3226,
+   "r": -0.0010689891062676503,
+   "r2": 1.1427377093189098e-06
+  },
+  {
+   "text": "The reason old bridges were built with a",
+   "pos": 8,
+   "n_tokens": 2572,
+   "r": -0.015225583321325169,
+   "r2": 0.00023181838747461515
+  },
+  {
+   "text": "The reason old bridges were built with a",
+   "pos": 9,
+   "n_tokens": 5831,
+   "r": -0.004020075829944969,
+   "r2": 1.6161009678507734e-05
+  },
+  {
+   "text": "An unconventional solution to urban traf",
+   "pos": 4,
+   "n_tokens": 12351,
+   "r": 0.08977389483626602,
+   "r2": 0.008059352194072951
+  },
+  {
+   "text": "An unconventional solution to urban traf",
+   "pos": 5,
+   "n_tokens": 5960,
+   "r": 0.15614154987913154,
+   "r2": 0.02438018359865732
+  },
+  {
+   "text": "An unconventional solution to urban traf",
+   "pos": 6,
+   "n_tokens": 4237,
+   "r": 0.1054433829892879,
+   "r2": 0.01111830701622565
+  },
+  {
+   "text": "An unconventional solution to urban traf",
+   "pos": 7,
+   "n_tokens": 2382,
+   "r": 0.12968351518709248,
+   "r2": 0.016817814111280846
+  },
+  {
+   "text": "An unconventional solution to urban traf",
+   "pos": 8,
+   "n_tokens": 6570,
+   "r": 0.03605033694449248,
+   "r2": 0.0012996267938114394
+  },
+  {
+   "text": "An unconventional solution to urban traf",
+   "pos": 9,
+   "n_tokens": 4445,
+   "r": 0.15707829608470886,
+   "r2": 0.024673591100875462
+  },
+  {
+   "text": "What people usually get wrong about lear",
+   "pos": 6,
+   "n_tokens": 11341,
+   "r": 0.10501766570465279,
+   "r2": 0.011028710110054208
+  },
+  {
+   "text": "What people usually get wrong about lear",
+   "pos": 7,
+   "n_tokens": 4777,
+   "r": 0.10374693667455787,
+   "r2": 0.01076342686935472
+  },
+  {
+   "text": "What people usually get wrong about lear",
+   "pos": 8,
+   "n_tokens": 2447,
+   "r": 0.10440613162334825,
+   "r2": 0.01090064032055192
+  },
+  {
+   "text": "What people usually get wrong about lear",
+   "pos": 9,
+   "n_tokens": 4780,
+   "r": -0.07846142922659276,
+   "r2": 0.006156195876279624
+  },
+  {
+   "text": "What people usually get wrong about lear",
+   "pos": 10,
+   "n_tokens": 3579,
+   "r": -0.05855142896969589,
+   "r2": 0.003428269834393343
+  },
+  {
+   "text": "What people usually get wrong about lear",
+   "pos": 11,
+   "n_tokens": 3085,
+   "r": -0.08152179434389854,
+   "r2": 0.006645802953048888
+  }
+ ],
+ "pooled_r": 0.11087542602214366,
+ "psi_hat": 0.11087542602214366,
+ "slope": 0.0835671883728041,
+ "intercept": -0.34269296410794364,
+ "mean_r2": 0.021303831908379086
+}

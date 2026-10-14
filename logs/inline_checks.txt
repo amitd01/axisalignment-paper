@@ -1,0 +1,72 @@
+A. sampled beta, 400 positions, rng seed 1 (1B/7B/Tulu, both stages)
+  olmo   base->sft  beta_unw median -0.007 (frac>0 0.44)  R2 0.003 | beta_w median +0.096 (frac>0 0.78)  wR2 0.088
+  olmo   sft->dpo  beta_unw median +0.003 (frac>0 0.53)  R2 0.005 | beta_w median +0.028 (frac>0 0.62)  wR2 0.069
+  olmo7b base->sft  beta_unw median +0.038 (frac>0 0.85)  R2 0.009 | beta_w median +0.115 (frac>0 0.88)  wR2 0.183
+  olmo7b sft->dpo  beta_unw median +0.040 (frac>0 0.85)  R2 0.026 | beta_w median +0.093 (frac>0 0.90)  wR2 0.196
+  tulu   base->sft  beta_unw median +0.027 (frac>0 0.77)  R2 0.008 | beta_w median +0.080 (frac>0 0.85)  wR2 0.144
+  tulu   sft->dpo  beta_unw median +0.065 (frac>0 0.97)  R2 0.049 | beta_w median +0.123 (frac>0 0.93)  wR2 0.289
+
+B. 400-sample median R^2, linear vs linear+piecewise, rng seed 2
+  olmo    base->sft  linear 0.003   linear+nonlinear 0.007
+  olmo    sft->dpo  linear 0.005   linear+nonlinear 0.010
+  olmo7b  base->sft  linear 0.009   linear+nonlinear 0.015
+  olmo7b  sft->dpo  linear 0.026   linear+nonlinear 0.036
+  tulu    base->sft  linear 0.006   linear+nonlinear 0.014
+  tulu    sft->dpo  linear 0.052   linear+nonlinear 0.062
+  olmo13b base->sft  linear 0.016   linear+nonlinear 0.022
+  olmo13b sft->dpo  linear 0.065   linear+nonlinear 0.071
+
+C. total-loss CI widths, arm-B totals, prompt-final branching ratios
+  olmo     pf width 0.396  B width 0.080  ratio 4.9x   B total +0.426 [+0.387, +0.467]   pf branching ratio 1.96
+  olmo7b   pf width 0.424  B width 0.069  ratio 6.2x   B total +0.764 [+0.730, +0.799]   pf branching ratio 3.22
+  tulu     pf width 0.412  B width 0.070  ratio 5.9x   B total +0.756 [+0.720, +0.791]   pf branching ratio 2.39
+  olmo13b  pf width 0.246  B width 0.055  ratio 4.5x   B total +0.413 [+0.385, +0.440]   pf branching ratio 1.51
+  prompt-final: OLMo-7B - Tulu-8B total (paired by prompt) +0.160 [-0.016, +0.325]
+  arm B: OLMo-7B - Tulu-8B total (paired by prompt) +0.009 [-0.038, +0.060]
+  arm B: 13B - 1B total (paired by prompt) -0.013 [-0.053, +0.027]
+
+D. final-written minus base-written entropy, per stage
+  olmo    base -0.055 [-0.112, +0.008]  sft -0.249 [-0.314, -0.183]  dpo -0.238 [-0.302, -0.175]  inst -0.241 [-0.305, -0.178]
+  olmo7b  base -0.208 [-0.277, -0.139]  sft -0.397 [-0.469, -0.330]  dpo -0.362 [-0.426, -0.302]  inst -0.362 [-0.425, -0.302]
+  tulu    base -0.274 [-0.356, -0.189]  sft -0.367 [-0.443, -0.289]  dpo -0.325 [-0.398, -0.251]  inst -0.324 [-0.396, -0.251]
+  olmo13b base -0.137 [-0.213, -0.060]  sft -0.205 [-0.274, -0.137]  dpo -0.188 [-0.252, -0.123]  inst -0.190 [-0.253, -0.125]
+
+E. plausible-set size |{v: p_ref > 1e-6}| per position, reference stage of each delta
+  arm B olmo   base  median   3047  IQR [1524, 5282]
+  arm B olmo   sft   median   2647  IQR [1192, 4848]
+  arm B olmo   dpo   median   2396  IQR [1012, 4488]
+  prompt-final olmo   base  median   3766
+  prompt-final olmo   sft   median   3104
+  arm B olmo7b base  median   2228  IQR [1064, 4285]
+  arm B olmo7b sft   median   1316  IQR [546, 2987]
+  arm B olmo7b dpo   median    897  IQR [332, 2285]
+  prompt-final olmo7b base  median   3222
+  prompt-final olmo7b sft   median   1962
+  arm B tulu   base  median   2240  IQR [984, 4347]
+  arm B tulu   sft   median   1592  IQR [640, 3381]
+  arm B tulu   dpo   median    862  IQR [301, 2204]
+  prompt-final tulu   base  median   3582
+  prompt-final tulu   sft   median   2310
+
+F. cross-lineage X = change(stage) - change(base), 1B stages
+  7B-Instruct text (cross-lineage): X[sft] -0.194 [-0.224, -0.163]  X[dpo] -0.158 [-0.190, -0.126]  X[inst] -0.159 [-0.191, -0.126]
+  1B-Instruct text (same lineage): X[sft] -0.194 [-0.230, -0.158]  X[dpo] -0.183 [-0.224, -0.144]  X[inst] -0.186 [-0.228, -0.147]
+
+I. 135M lambda=-1.0 vs temperature, per-prompt matched: 3.00x, CI [1.58, 5.14], wins 4/5
+H. published 135M points vs temperature frontier at matched Jaccard (ratio = ppl / frontier ppl):
+  L100   jac 0.0781  ratio 1.00
+  L050   jac 0.0596  ratio 0.53
+  L000   jac 0.0692  ratio 0.87
+  Lm050  jac 0.0547  ratio 0.72
+  Lm100  jac 0.0326  ratio 0.37
+  Lm150  jac 0.0193  ratio 0.22
+  Lm200  jac 0.0125  ratio 0.17
+  G02    jac 0.0417  ratio 1.30
+  G05    jac 0.0022  ratio 0.98
+  G08    jac 0.0012  ratio 1.53
+G. pre-registered 135M gamma sweep, ratio to the new temperature frontier (bootstrap over 5 prompts)
+  G005: ratio 1.21  CI [0.79, 1.33]  in-range 0.52
+  G010: ratio 1.05  CI [0.71, 1.53]  in-range 1.00
+  G020: ratio 1.62  CI [0.37, 4.06]  in-range 1.00
+  G030: ratio 1.59  CI [0.57, 4.02]  in-range 1.00
+  G050: ratio 1.05  CI [0.48, 1.85]  in-range 0.92

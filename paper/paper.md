@@ -406,6 +406,16 @@ admitting a piecewise-linear term, the same component accounts for at most 7.1%.
 That is the paper's central measurement, and the weighted pairing is the
 conservative one.
 
+**The remainder is not inert.** The component orthogonal to both axes carries a
+share of the preference stage's entropy loss that falls as the model grows: 45.8%
+[37.0, 57.0] at the 1B, 25.7% [22.1, 29.3] at the 7B, 14.7% [12.2, 17.5] at
+Tülu-8B and 7.4% [5.2, 9.7] at the 13B. At instruction tuning it is small and its
+sign is not consistent — −30.6% [−37.7, −24.1] at the 1B, 1.2% [−0.3, 2.7] at
+Tülu, 4.7% [2.6, 6.8] at the 13B and 5.5% [3.1, 7.9] at the 7B. Attributing
+nearly all of the loss to the typicality-aligned component is therefore a
+statement about that component's share, not a demonstration that nothing else
+moves entropy. We do not characterise what the remainder is.
+
 ### 5.2 Whether the two stages differ depends on the fit
 
 **The preference stage.** Its entropy loss comes mostly from the body of the
@@ -623,13 +633,15 @@ stage's shift at most — and under an unweighted fit, at most 7% — carries ne
 all of its entropy loss, at both stages, in every model measured. Larger than that
 component, though itself a minority of the shift, is a shared direction: measurable
 at every stage of every model, surviving a partial correlation against reference
-typicality, with null controls at 0.008 and 0.004. Its context-invariance varies
-with scale and is weak at the smallest — ρ_reg = 0.09 at the 1B against 0.26–0.45
-at 7–13B — so "context-independent" is a description of the larger models, not of
-all four. Most of each stage's shift is accounted for by neither axis, we do not
-characterise what the remainder is, and we do not claim it is inert: an exact
-decomposition assigns the typicality component nearly all of the entropy loss, but
-that is an attribution of the loss, not a demonstration that nothing else moves it.
+typicality, with null controls at 0.008 and 0.004. Its context-invariance is a
+property of the stage rather than of the scale: for instruction tuning it is
+weakest at the 1B (ρ_reg = 0.092) and rises to 0.445 at the 13B, while for the
+preference stage the ordering inverts and the 1B is the highest of the four
+(0.558, against 0.386–0.489). "Context-independent" fits the preference stage at
+every scale and instruction tuning only above the 1B. Most of each stage's shift
+is accounted for by neither axis, we do not characterise what the remainder is,
+and it is not inert — it carries up to 45.8% of the preference stage's entropy
+loss at the 1B (§5.1).
 
 Those findings suggest a hypothesis about larger scales, which this work does not
 test: an operator on the reference axis acts on the axis that carries the entropy,
@@ -663,11 +675,12 @@ reproducible without stating it.
 | `decomp_resid.py` | non-linear typicality, cross-fitted shared directions |
 | `check_tokenizers.py` | token-ID-level tokeniser identity verification |
 | `grind.py`, `matched6.py` | generation sweep and matched-diversity scoring |
-| `gen_scale.py` (mode `ctrl`) | shuffled-delta direction control |
-| `exp1d_misspec.py` | the withdrawn ψ\* threshold (§7) |
-| `exp1e_peakedness.py` | the peakedness probe that withdrew it |
-| `pilot135m_port/` | 135M γ sweep and β measurement |
-| `logs/` | the run scripts and evaluation outputs behind the reported numbers: the 135M frontier, the β measurement, the lineage statistic, the pre-registered 13B evaluation, the R² intervals and the whose-text offset check |
+| `gen_scale.py` (mode `ctrl`), `pilot-135m/gen_ctrl.py` | shuffled-delta direction control, at scale and at 135M |
+| `exp1e_peakedness.py` | the peakedness probe that withdrew the ψ\* threshold (§7) |
+| `pilot135m_port/` | 135M γ sweep and β measurement, ported |
+| `pilot-135m/` | the original 135M pilot, including `exp1d_misspec.py` (the withdrawn ψ\* threshold) and `stats.py`, the source of the 3.00× figure |
+| `logs/` | the run scripts and evaluation outputs behind the reported numbers: the 135M frontier, the lineage statistic, the pre-registered 13B evaluation, the R² intervals and the whose-text offset check |
+| `logs/inline_checks.py` | reproduces the figures that were originally computed inline rather than by a script — the sampled β and its sign rate, the 400-position R² table, the CI widths, the paired totals, the branching ratios, the whose-text base entropies and the plausible-set sizes |
 
 Six pre-registrations, each hashed before its data existed, are released with the code
 at https://github.com/amitd01/axisalignment-paper: the 13B scale test, the register test, the lineage test, the entropy

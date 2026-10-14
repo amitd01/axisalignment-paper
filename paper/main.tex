@@ -490,6 +490,17 @@ admitting a piecewise-linear term, the same component accounts for at most 7.1\%
 That is the paper's central measurement, and the weighted pairing is the
 conservative one.
 
+\paragraph{The remainder is not inert.} The component orthogonal to both axes
+carries a share of the preference stage's entropy loss that falls as the model
+grows: 45.8\% [37.0, 57.0] at the 1B, 25.7\% [22.1, 29.3] at the 7B, 14.7\%
+[12.2, 17.5] at T\"ulu-8B and 7.4\% [5.2, 9.7] at the 13B. At instruction tuning
+it is small and its sign is not consistent --- $-30.6\%$ [$-37.7$, $-24.1$] at the
+1B, 1.2\% [$-0.3$, 2.7] at T\"ulu, 4.7\% [2.6, 6.8] at the 13B and 5.5\%
+[3.1, 7.9] at the 7B. Attributing nearly all of the loss to the
+typicality-aligned component is therefore a statement about that component's
+share, not a demonstration that nothing else moves entropy. We do not characterise
+what the remainder is.
+
 \subsection{Whether the two stages differ depends on the fit}
 
 \paragraph{The preference stage.} Its entropy loss comes mostly from the body of the
@@ -725,13 +736,14 @@ nearly all of its entropy loss, at both stages, in every model measured. Larger
 than that component, though itself a minority of the shift, is a shared direction:
 measurable at every stage of every model, surviving a partial correlation against
 reference typicality, with null controls at 0.008 and 0.004. Its context-invariance
-varies with scale and is weak at the smallest --- $\rreg = 0.09$ at the 1B against
-0.26--0.45 at 7--13B --- so ``context-independent'' is a description of the larger
-models, not of all four. Most of each stage's shift is accounted for by neither
-axis, we do not characterise what the remainder is, and we do not claim it is
-inert: an exact decomposition assigns the typicality component nearly all of the
-entropy loss, but that is an attribution of the loss, not a demonstration that
-nothing else moves it.
+is a property of the stage rather than of the scale: for instruction tuning it is
+weakest at the 1B ($\rreg = 0.092$) and rises to 0.445 at the 13B, while for the
+preference stage the ordering inverts and the 1B is the highest of the four
+(0.558, against 0.386--0.489). ``Context-independent'' fits the preference stage at
+every scale and instruction tuning only above the 1B. Most of each stage's shift is
+accounted for by neither axis, we do not characterise what the remainder is, and it
+is not inert --- it carries up to 45.8\% of the preference stage's entropy loss at
+the 1B (Section~5.1).
 
 Those findings suggest a hypothesis about larger scales, which this work does not
 test: an operator on the reference axis acts on the axis that carries the entropy,
@@ -758,7 +770,9 @@ reproducible without stating it.
 \section{Reproduction}
 
 \begin{center}
-\begin{tabular}{ll}
+% p-columns: both sides grew long once the release was completed, and an ll table
+% overflows the text block as soon as either does.
+\begin{tabular}{p{0.30\textwidth} p{0.60\textwidth}}
 \toprule
 file & contents \\
 \midrule
@@ -770,10 +784,11 @@ file & contents \\
 \texttt{check\_tokenizers.py} & token-ID-level tokeniser identity verification \\
 \texttt{grind.py}, \texttt{matched6.py} & generation sweep and matched-diversity scoring \\
 \texttt{gen\_scale.py} (mode \texttt{ctrl}) & shuffled-delta direction control \\
-\texttt{exp1d\_misspec.py} & the withdrawn $\psi^{*}$ threshold (Sec.~\ref{sec:failures}) \\
-\texttt{exp1e\_peakedness.py} & the peakedness probe that withdrew it \\
-\texttt{pilot135m\_port/} & 135M $\gamma$ sweep and $\beta$ measurement \\
+\texttt{exp1e\_peakedness.py} & the probe that withdrew the $\psi^{*}$ threshold (Sec.~\ref{sec:failures}) \\
+\texttt{pilot135m\_port/} & 135M $\gamma$ sweep and $\beta$ measurement, ported \\
+\texttt{pilot-135m/} & the original 135M pilot, including the withdrawn threshold and the source of the 3.00$\times$ figure \\
 \texttt{logs/} & run scripts and evaluation outputs behind the reported numbers \\
+\texttt{logs/inline\_checks.py} & reproduces the figures originally computed inline rather than by a script \\
 \bottomrule
 \end{tabular}
 \end{center}

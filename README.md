@@ -85,15 +85,22 @@ code/                    analysis and generation
   exp1d_misspec.py       the withdrawn psi* threshold (see "What did not work")
   exp1e_peakedness.py    the peakedness probe that withdrew it
   prompts.py             the prompt set
-  make_tables.py         STALE: builds the earlier 1B-era tables, not this paper's
   pilot135m_port/        135M gamma sweep and beta measurement
   dumps/135m/            135M sweep outputs: gen_*.json, beta135m.json, scored sweep
                          (the 7B/13B/Tulu dumps are ~53GB and are not shipped;
                           regenerate them with dump_logprobs_mps.py)
 logs/                    run scripts and the evaluation outputs behind the numbers
-  frontier_135m.txt      the 135M diversity/fluency frontier (3.00x, 0.98x, 0.17-0.37)
+  frontier_135m.txt      the 135M diversity/fluency frontier (0.98x, 0.17-0.37)
+  inline_checks.py/.txt  reproduces every figure that was computed inline rather
+                         than by a script: the sampled beta and its sign rate, the
+                         400-position R^2 table, the CI widths, the paired totals,
+                         the branching ratios and the plausible-set sizes
   score135m.txt          scored 135M sweep
   beta135m via code/dumps/135m/beta135m.json   the beta = +0.081 measurement
+pilot-135m/              the original 135M pilot — gamma sweep, psi measurement,
+                         gen_ctrl.py (135M direction control), exp1d_misspec.py
+                         (the withdrawn psi* threshold), and stats.py, which is
+                         where the 3.00x figure comes from
   lineage_eval.txt       the cross-lineage statistic (-0.194 both arms)
   prereg13b_eval.py/.txt the pre-registered 13B evaluation (+15.6 [12.7, 18.6])
   r2_full.py/.txt        R^2 point estimates and intervals, unweighted and weighted
@@ -111,6 +118,11 @@ paper/
   paper.md               source of record
   main.tex               arXiv submission source
 ```
+
+Table regeneration: `logs/make_task2_tables.py` produces the numbers behind the
+tables in §2.3, §3.1, §4.2 and §5, and `logs/r2_full.py` the R² table. An earlier
+`make_tables.py` was removed — it read `results_psi_1b.json` and built the
+superseded 1B-era tables, so keeping it would have been worse than keeping nothing.
 
 ## Reproducing
 
