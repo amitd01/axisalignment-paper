@@ -24,12 +24,22 @@ Exit:   0 if numbers match, 1 otherwise. Prose findings are always advisory --
         read them, do not gate on them.
 """
 import difflib
+import os
 import re
 import sys
 from collections import Counter
 
-MD = "/home/claude/scale/paper-v9.md"
-TEX = "/home/claude/arxiv/main.tex"
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+# Default to the two files sitting beside this script in the repo, so anyone who
+# clones can run it. Override with arguments for a working copy elsewhere:
+#     python3 numdiff.py path/to/paper.md path/to/main.tex
+MD = os.path.join(HERE, "paper.md")
+TEX = os.path.join(HERE, "main.tex")
+if len(sys.argv) == 3:
+    MD, TEX = sys.argv[1], sys.argv[2]
+elif len(sys.argv) != 1:
+    sys.exit(f"usage: {sys.argv[0]} [paper.md main.tex]")
 
 
 # --------------------------------------------------------------------------
