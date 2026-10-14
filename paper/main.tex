@@ -748,7 +748,8 @@ depends on stage and scale together, and in opposite directions: within OLMo,
 instruction tuning rises with scale (0.092, 0.320, 0.445 at 1B, 7B and 13B) while
 the preference stage falls (0.558, 0.489, 0.386). It is moderately
 context-invariant everywhere --- $\rreg$ between 0.26 and 0.56 --- except for
-instruction tuning at the 1B. Squared, that is at most 0.31 of the shift, so it is
+instruction tuning at the 1B. Squared, that is at most roughly 0.31 of the shift ---
+the square of a mean correlation, so an approximation rather than a bound --- and it is
 not a context-independent direction so much as a partially shared one. Most of each
 stage's shift is accounted for by neither axis, we do not characterise what the
 remainder is, and it is not inert --- at instruction tuning in the 1B it raises

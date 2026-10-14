@@ -101,8 +101,8 @@ logs/                    run scripts and the evaluation outputs behind the numbe
   prereg13b_eval.py/.txt the pre-registered 13B evaluation (+15.6 [12.7, 18.6])
   r2_full.py/.txt        R^2 point estimates and intervals, unweighted and weighted
   offset_check.py        the whose-text offset check
-  make_task2_tables.py   regenerates the numbers behind the tables in §2.3, §3.1,
-                         §4.2 and §5
+  make_task2_tables.py   regenerates the numbers behind the tables in §2.3, §3.1
+                         and §4.2
   *_analysis.txt         per-run analysis output
   *.log, *.sh            raw run logs and the shell drivers that produced them
 pilot-135m/              the original 135M pilot
@@ -124,7 +124,8 @@ paper/
 ```
 
 Table regeneration: `logs/make_task2_tables.py` produces the numbers behind the
-tables in §2.3, §3.1, §4.2 and §5, and `logs/r2_full.py` the R² table. An earlier
+tables in §2.3, §3.1 and §4.2; `logs/r2_full.py` the full-position R² estimates
+and intervals; and `logs/inline_checks.py` the 400-position R² table in §5. An earlier
 `make_tables.py` was removed — it read `results_psi_1b.json` and built the
 superseded 1B-era tables, so keeping it would have been worse than keeping nothing.
 
