@@ -89,6 +89,7 @@ results/
   PREREG-*.md            six pre-registrations, each hashed before its data existed
   PREREG-*.sha256        the hashes
   results_*.json         raw per-run output
+  verify_prereg.py       checks all six hashes, including the two with notes
   TASK1-REPORT.md        verification reports
   TASK2-REPORT.md
 paper/
@@ -122,14 +123,42 @@ than exact reproduction.
 
 Six, each hashed before its data existed: the 13B scale test, the register test,
 the lineage test, the entropy decomposition, the residual test and the 135M γ
-sweep. Two carry dated notes appended after the fact; the `.sha256` files cover
-the original text only, and each note states what changed and when.
-
-Verify:
+sweep.
 
 ```bash
-cd results && shasum -a 256 -c PREREG-13B.sha256
+cd results && python3 verify_prereg.py
 ```
+
+```
+PREREG-135M-GAMMA  OK    whole file
+PREREG-13B         OK    original text only: first 1826 of 3245 bytes (56%), note appended after hashing
+PREREG-DECOMP      OK    whole file
+PREREG-LINEAGE     OK    whole file
+PREREG-REGISTER    OK    whole file
+PREREG-RESIDUAL    OK    original text only: first 1819 of 2765 bytes (66%), note appended after hashing
+
+All 6 pre-registrations verify.
+```
+
+Two of the six — `PREREG-13B` and `PREREG-RESIDUAL` — carry a dated note appended
+*after* the hash was taken, so hashing the whole file fails for those by design;
+the hash covers the original text only, and `verify_prereg.py` finds that
+boundary and checks it. Both notes record a decision made before the run they
+govern produced anything, and both say what changed and why:
+
+- **`PREREG-13B`** moved the comparison basis from raw prompt-final positions to
+  base-written continuations, because the register run had meanwhile shown the
+  raw prompt-final share to be protocol-dependent (−0.6% vs 25.5% vs 27.6% on the
+  same checkpoints). The original thresholds are still computed and reported,
+  labelled as the artefact arm. Appended before any 13B dump existed.
+- **`PREREG-RESIDUAL`** withdrew a "position-specific" claim before the run, on
+  the grounds that the leave-one-out regressor absorbs only the cross-prompt
+  component by construction, so the remainder can only be called *unexplained by
+  either axis*. Appended before any code or result existed.
+
+Read the notes rather than taking this summary for them. Whether an appended note
+is as good as an untouched pre-registration is a judgement for the reader; the
+point of publishing the boundary is that the judgement is available to make.
 
 ## What did not work
 
