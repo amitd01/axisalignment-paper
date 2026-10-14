@@ -82,8 +82,9 @@ code/                    analysis and generation
   score_scale.py         scores the sweep
   grind.py               sweep driver
   matched.py, matched6.py  matched-diversity scoring
-  exp1d_misspec.py       the withdrawn psi* threshold (see "What did not work")
-  exp1e_peakedness.py    the peakedness probe that withdrew it
+  exp1e_peakedness.py    the peakedness probe that withdrew the psi* threshold
+                         (see "What did not work"; the threshold itself is
+                          pilot-135m/exp1d_misspec.py)
   prompts.py             the prompt set
   pilot135m_port/        135M gamma sweep and beta measurement
   dumps/135m/            135M sweep outputs: gen_*.json, beta135m.json, scored sweep
@@ -96,17 +97,20 @@ logs/                    run scripts and the evaluation outputs behind the numbe
                          400-position R^2 table, the CI widths, the paired totals,
                          the branching ratios and the plausible-set sizes
   score135m.txt          scored 135M sweep
-  beta135m via code/dumps/135m/beta135m.json   the beta = +0.081 measurement
-pilot-135m/              the original 135M pilot — gamma sweep, psi measurement,
-                         gen_ctrl.py (135M direction control), exp1d_misspec.py
-                         (the withdrawn psi* threshold), and stats.py, which is
-                         where the 3.00x figure comes from
   lineage_eval.txt       the cross-lineage statistic (-0.194 both arms)
   prereg13b_eval.py/.txt the pre-registered 13B evaluation (+15.6 [12.7, 18.6])
   r2_full.py/.txt        R^2 point estimates and intervals, unweighted and weighted
   offset_check.py        the whose-text offset check
+  make_task2_tables.py   regenerates the numbers behind the tables in §2.3, §3.1,
+                         §4.2 and §5
   *_analysis.txt         per-run analysis output
   *.log, *.sh            raw run logs and the shell drivers that produced them
+pilot-135m/              the original 135M pilot
+  stats.py               where the 3.00x figure comes from
+  gen_ctrl.py            the 135M shuffled-delta direction control
+  exp1d_misspec.py       the withdrawn psi* threshold (see "What did not work")
+  exp1*.py, exp2*.py     the gamma sweep and psi measurement experiments
+  results_*.json         their outputs
 results/
   PREREG-*.md            six pre-registrations, each hashed before its data existed
   PREREG-*.sha256        the hashes

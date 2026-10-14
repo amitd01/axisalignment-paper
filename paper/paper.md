@@ -406,15 +406,22 @@ admitting a piecewise-linear term, the same component accounts for at most 7.1%.
 That is the paper's central measurement, and the weighted pairing is the
 conservative one.
 
-**The remainder is not inert.** The component orthogonal to both axes carries a
-share of the preference stage's entropy loss that falls as the model grows: 45.8%
-[37.0, 57.0] at the 1B, 25.7% [22.1, 29.3] at the 7B, 14.7% [12.2, 17.5] at
-Tülu-8B and 7.4% [5.2, 9.7] at the 13B. At instruction tuning it is small and its
-sign is not consistent — −30.6% [−37.7, −24.1] at the 1B, 1.2% [−0.3, 2.7] at
-Tülu, 4.7% [2.6, 6.8] at the 13B and 5.5% [3.1, 7.9] at the 7B. Attributing
-nearly all of the loss to the typicality-aligned component is therefore a
-statement about that component's share, not a demonstration that nothing else
-moves entropy. We do not characterise what the remainder is.
+**The remainder is not inert.** For the preference stage, the component orthogonal
+to both axes falls with scale within the OLMo-1124 release: 25.7% [22.1, 29.3] of
+the entropy loss at the 7B against 7.4% [5.2, 9.7] at the 13B, with Tülu-8B — a
+different family — at 14.7% [12.2, 17.5]. The 1B's 45.8% [37.0, 57.0] is not
+comparable to those: its decomposition nearly cancels there (typicality 290.5%
+against a shared share of −236.2%), so only the positive sign is interpretable.
+
+At instruction tuning the 1B is the interesting case, and it runs the other way:
+the remainder *raises* entropy, −30.6% [−37.7, −24.1], partly offsetting a
+typicality component of 139.0%. That decomposition does not near-cancel — the
+shared share is 2.1% — so unlike the 1B preference stage its magnitude can be
+read. At the 7B, Tülu and 13B the remainder carries 1–6%.
+
+Attributing nearly all of the loss to the typicality-aligned component is
+therefore a statement about that component's share, not a demonstration that
+nothing else moves entropy. We do not characterise what the remainder is.
 
 ### 5.2 Whether the two stages differ depends on the fit
 
@@ -633,15 +640,16 @@ stage's shift at most — and under an unweighted fit, at most 7% — carries ne
 all of its entropy loss, at both stages, in every model measured. Larger than that
 component, though itself a minority of the shift, is a shared direction: measurable
 at every stage of every model, surviving a partial correlation against reference
-typicality, with null controls at 0.008 and 0.004. Its context-invariance is a
-property of the stage rather than of the scale: for instruction tuning it is
-weakest at the 1B (ρ_reg = 0.092) and rises to 0.445 at the 13B, while for the
-preference stage the ordering inverts and the 1B is the highest of the four
-(0.558, against 0.386–0.489). "Context-independent" fits the preference stage at
-every scale and instruction tuning only above the 1B. Most of each stage's shift
-is accounted for by neither axis, we do not characterise what the remainder is,
-and it is not inert — it carries up to 45.8% of the preference stage's entropy
-loss at the 1B (§5.1).
+typicality, with null controls at 0.008 and 0.004. Its context-invariance depends
+on stage and scale together, and in opposite directions: within OLMo, instruction
+tuning rises with scale (0.092, 0.320, 0.445 at 1B, 7B and 13B) while the
+preference stage falls (0.558, 0.489, 0.386). It is moderately context-invariant
+everywhere — ρ_reg between 0.26 and 0.56 — except for instruction tuning at the
+1B. Squared, that is at most 0.31 of the shift, so it is not a context-independent
+direction so much as a partially shared one. Most of each stage's shift is
+accounted for by neither axis, we do not characterise what the remainder is, and
+it is not inert — at instruction tuning in the 1B it raises entropy by enough to
+offset a third of the loss (§5.1).
 
 Those findings suggest a hypothesis about larger scales, which this work does not
 test: an operator on the reference axis acts on the axis that carries the entropy,
