@@ -14,8 +14,11 @@ Work there; release here.
    produced it, committed in the same change.
 3. Never commit `code/dumps/` or anything over a few MB; raw dumps stay in the
    working folder.
-4. `Peer Review LLM/` holds LLM-generated peer reviews; it is untracked until the
-   owner decides whether reviews belong in the public record.
+4. `Peer Review LLM/` holds LLM-generated peer reviews (Gemini, NotebookLM, OpenAI).
+   **Decision 2026-10-17: local only.** It is gitignored and must never be pushed;
+   the public record carries the paper and its evidence, not machine reviews of it.
+   The folder lives on the owner's Mac beside this repo; treat its contents as input
+   for revisions, cite nothing from it.
 
 ## Commit convention
 Plain imperative summaries describing the evidence change

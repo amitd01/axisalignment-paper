@@ -10,7 +10,7 @@
 
 ## Version control
 - Public repo `github.com/amitd01/axisalignment-paper`, branch `main`, MIT `LICENSE`.
-- `.gitignore`: `.DS_Store`, `__pycache__/`.
+- `.gitignore`: `.DS_Store`, `__pycache__/`, `Peer Review LLM/` (local-only by decision, see CLAUDE.md).
 - Raw dumps are excluded by policy, not by `.gitignore`; they never enter this tree.
 
 ## Cost ledger
