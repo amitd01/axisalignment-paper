@@ -122,6 +122,8 @@ results/
   verify_prereg.py       checks all six hashes, including the two with notes
   TASK1-REPORT.md        verification reports
   TASK2-REPORT.md
+paper-controls.md        every counter-argument raised and every modelling choice revised,
+                         with its response and evidence
 paper/
   paper.md               source of record
   main.tex               arXiv submission source
