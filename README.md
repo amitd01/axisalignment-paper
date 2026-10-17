@@ -102,6 +102,8 @@ logs/                    run scripts and the evaluation outputs behind the numbe
   lineage_eval.txt       the cross-lineage statistic (-0.194 both arms)
   prereg13b_eval.py/.txt the pre-registered 13B evaluation (+15.6 [12.7, 18.6])
   r2_full.py/.txt        R^2 point estimates and intervals, unweighted and weighted
+  robustness_tables.py   reprints the §5.1 specification grid from results/ and computes
+  robustness_s4.txt      every range §5.1 cites from it (stride-4 run)
   offset_check.py        the whose-text offset check
   make_task2_tables.py   regenerates the numbers behind the tables in §2.3, §3.1
                          and §4.2

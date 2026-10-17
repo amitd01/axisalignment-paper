@@ -20,12 +20,14 @@ scored positions.
 stage's log-probability shift accounts for a minority of that shift's variance: a
 median of at most 2.2% for instruction tuning and 7.1% for the preference stage
 under an unweighted fit allowing linear and piecewise-linear terms, and at most
-about 30% under a probability-weighted linear fit. An exact counterfactual Shapley
+about a third under a probability-weighted linear fit. An exact counterfactual Shapley
 attribution of each stage's entropy change assigns that same component **nearly
 all (87–139%) of instruction tuning's entropy loss and all (102–291%) of the
-preference stage's**, under the pre-registered weighted fit. Comparing like with
-like, a component accounting for about 30% of the shift at most carries nearly all
-of its entropy cost. The diversity cost is carried by a small part of the shift.
+preference stage's**, under the pre-registered weighted fit. Across six weighted
+specifications these become 77–157% and 90–346%; under an unweighted fit they fall
+to −105–56% and 35–178%, so the magnitude is a property of the weighting. Comparing
+like with like, a component accounting for at most about a third of the shift
+carries nearly all of its entropy cost. The diversity cost is carried by a small part of the shift.
 
 **By correlation, the larger of the two components we measured is a shared direction.** Writing ρ_reg for the correlation between
 a stage's per-token shift and the mean shift on *other* prompts
@@ -416,7 +418,7 @@ exploratory variant merging linear and non-linear typicality assigns the compone
 53–122% and 95–204% of the two stages' losses.
 
 **Comparing like with like — the weighted linear fit on both sides — a component
-accounting for about 30% of a stage's shift at most carries nearly all of its
+accounting for at most about a third of a stage's shift carries nearly all of its
 entropy loss, in every model and at both stages.** Under an unweighted fit
 admitting a piecewise-linear term, the same component accounts for at most 7.1%.
 That is the paper's central measurement, and the weighted pairing is the
@@ -426,6 +428,48 @@ weighted the same way is judged on the tokens that move entropy. The unweighted
 fit treats a token at p = 10⁻⁶ like one at p = 0.3. Note also that the two halves of
 the sentence have different standing: the entropy shares are pre-registered, the
 variance shares exploratory.
+
+**Robustness — exploratory.** `code/robustness.py` repeats the decomposition over
+twelve specifications: weighted or unweighted fit; a plausible set of p_ref > 10⁻⁵,
+10⁻⁶ or 10⁻⁷; and a shared direction estimated from all other prompts or only from
+prompts in other task families. It reports the variance share and the entropy share
+under the same fit, with a bootstrap over prompts stratified by task family. These
+runs score every fourth position; at the pre-registered specification they reproduce
+the full-position shares to within 2.1 points at the 7B, Tülu and 13B, and run 8.6
+and 31.2 points high at the 1B, whose loss is smallest (`logs/robustness_s4.txt`).
+
+| stage | model | weighted fit | unweighted fit | weighted R² |
+|---|---|---|---|---|
+| instruction tuning | 1B | 127.9 to 156.8% | −104.8 to 35.2% | 14.4 to 15.4% |
+| | 7B | 83.8 to 100.8% | 9.2 to 45.0% | 24.7 to 25.2% |
+| | Tülu-8B | 86.0 to 102.5% | 5.1 to 52.1% | 20.5 to 20.9% |
+| | 13B | 77.3 to 90.8% | 43.3 to 56.1% | 20.5 to 20.8% |
+| preference | 1B | 266.8 to 345.5% | 111.1 to 178.4% | 15.7 to 16.4% |
+| | 7B | 115.3 to 135.3% | 35.1 to 80.6% | 27.6 to 27.8% |
+| | Tülu-8B | 90.8 to 111.4% | 51.1 to 73.3% | 33.8 to 34.2% |
+| | 13B | 89.6 to 107.0% | 65.8 to 82.0% | 27.4 to 28.2% |
+
+*Typicality-aligned share of each stage's entropy loss, minimum to maximum over the
+six specifications of each fit; last column, median per-position variance share
+under the weighted fit.*
+
+Under the weighted fit the result survives every specification: the component
+carries 77.3–156.8% of instruction tuning's loss and 89.6–345.5% of the preference
+stage's while accounting for 14.4–34.2% of the shift's variance. "All" of the
+preference stage's loss becomes "nearly all" at the loosest threshold, where the
+13B and Tülu move 16.5% and 18.1% of the loss to tokens outside the plausible set.
+Holding the shared direction out by task family changes no share by more than 3.4
+points, so it is not a within-family formatting habit. Within each of the six
+families the pre-registered share is 81.7–167.4% and 99.0–495.7%, and leaving one
+family out moves it by at most 4.4 points — except at the 1B preference stage,
+whose components nearly cancel. Under the unweighted fit only the contrast
+survives: the entropy share exceeds the variance share in 92 of 96 cells, but the
+share itself falls to −104.8–56.1% and 35.1–178.4%, and at the 1B's instruction
+tuning its sign depends on the threshold (the four exceptions). **"Nearly all" is a
+property of the probability-weighted fit.** The final stage, reported without
+prediction, matches the others at the 7B, Tülu and 13B (typicality 89.8–91.2%) but
+not at the 1B, where the shared direction carries 80.3% and typicality 9.0%
+[−15.2, 25.2].
 
 **The remainder is not inert.** For the preference stage, the component orthogonal
 to both axes falls with scale within the OLMo-1124 release: 25.7% [22.1, 29.3] of
@@ -666,9 +710,11 @@ a stage comparison that reports the position convention of §2.
 ## 10. Conclusion
 
 Across four pipelines, alignment's diversity cost is carried by a small part of the
-alignment shift. A typicality-aligned component accounting for about 30% of a
-stage's shift at most — and under an unweighted fit, at most 7% — carries nearly
-all of its entropy loss, at both stages, in every model measured. Larger than that
+alignment shift. A typicality-aligned component accounting for at most about a
+third of a stage's shift carries nearly all of its entropy loss under the
+probability-weighted fit, at both stages, in every model measured and across the
+specifications we tried; under an unweighted fit its share of the loss is smaller
+and, at the 1B's instruction tuning, unstable in sign. Larger than that
 component, though itself a minority of the shift, is a shared direction: measurable
 at every stage of every model, surviving a partial correlation against reference
 typicality, with null controls at 0.008 and 0.004. Its context-invariance depends
