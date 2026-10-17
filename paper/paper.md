@@ -2,7 +2,7 @@
 
 ### Stage-resolved measurement across four post-training pipelines
 
-**Draft v0.9 — 14 October 2026. Supersedes v0.8.**
+**Draft v1.0 (in revision) — 17 October 2026. Supersedes v0.9.**
 
 ---
 
@@ -27,7 +27,7 @@ preference stage's**, under the pre-registered weighted fit. Comparing like with
 like, a component accounting for about 30% of the shift at most carries nearly all
 of its entropy cost. The diversity cost is carried by a small part of the shift.
 
-**The larger of the two components we measured is a shared direction.** Writing ρ_reg for the correlation between
+**By correlation, the larger of the two components we measured is a shared direction.** Writing ρ_reg for the correlation between
 a stage's per-token shift and the mean shift on *other* prompts
 (leave-one-prompt-out), and ψ for its correlation with reference log-probability,
 ρ_reg exceeds ψ across the plausible set at every stage of all four models, with
@@ -359,10 +359,20 @@ reaches 0.663 (13B, DPO → final), whose plausible-set maximum is 0.237.
 ## 5. What costs the diversity
 
 Composition and consequence are different questions, and this section separates
-them. We attribute each stage's entropy change causally using counterfactual
+them. We attribute each stage's entropy change using counterfactual
 distributions — apply only part of the stage's log-probability shift, renormalise,
 recompute entropy — with Shapley values over the parts, which sum exactly to the
-measured ΔH with no residual interaction term.
+measured ΔH. Shapley efficiency does not remove interactions; it allocates them
+among the parts. This is an attribution under a stated decomposition, not causal
+identification of what training did.
+
+Two terms are used narrowly. The *typicality-aligned component* is the fitted
+term β · log p_ref, a reference-probability-aligned part of the shift; reading it
+as the typicality bias of the source literature is an interpretation (§9,
+limitation 4). The *shared-shift component* is γ · g, where g is the
+leave-one-prompt-out mean shift. Both are fitted at every position, so the
+bootstrap needs no refit; g itself is computed once on the full sample and held
+fixed across resamples.
 
 ### 5.1 A component explaining a minority of the shift carries nearly all of the loss
 
@@ -374,6 +384,12 @@ stage's (102.2% to 290.5%)**. Only the preference stage and the 1B's instruction
 tuning reach 100%; the other three instruction-tuning intervals sit below it. Shares
 above 100% with opposite-signed partners mean the components interact; magnitudes
 are not separable there, but the sign and the ordering are.
+
+*A worked example.* The 1B's preference stage loses 0.118 nats per position. Averaged
+over the orders in which the parts can be added, the typicality-aligned part removes 0.342 nats (290.5%); the shared-shift part restores 0.278 (−236.2%);
+the remainder removes 0.054 (45.8%) and the off-set tokens 0.000 (−0.2%). The four
+sum to the measured loss. A share above 100% means the component removes more
+entropy than the stage does in total, because another part puts some back.
 
 **How much of the shift that component is — exploratory.** The variance analysis
 below was run after the other results, to ask how large the costly component is.
@@ -404,7 +420,12 @@ accounting for about 30% of a stage's shift at most carries nearly all of its
 entropy loss, in every model and at both stages.** Under an unweighted fit
 admitting a piecewise-linear term, the same component accounts for at most 7.1%.
 That is the paper's central measurement, and the weighted pairing is the
-conservative one.
+conservative one. The weighting is not arbitrary: entropy is −Σ p log p, so each
+token's contribution to it is already weighted by its probability, and a fit
+weighted the same way is judged on the tokens that move entropy. The unweighted
+fit treats a token at p = 10⁻⁶ like one at p = 0.3. Note also that the two halves of
+the sentence have different standing: the entropy shares are pre-registered, the
+variance shares exploratory.
 
 **The remainder is not inert.** For the preference stage, the component orthogonal
 to both axes falls with scale within the OLMo-1124 release: 25.7% [22.1, 29.3] of
@@ -427,7 +448,10 @@ nothing else moves entropy. We do not characterise what the remainder is.
 
 **The preference stage.** Its entropy loss comes mostly from the body of the
 distribution: the head (reference-top tokens covering 50% of mass, median 2 tokens)
-carries 15–23%, the body 74–86%. Decomposing by component, the loss is carried by
+carries 15–23%, the body 74–86%. The decomposition's pre-registration predicted the
+opposite — a head share above 50% — so its primary hypothesis is **not supported**
+in any model; its secondary condition, typicality above shared shift, holds in all
+four. Decomposing by component, the loss is carried by
 the typicality-aligned part while the shared-shift part pushes entropy back *up* —
 by 16%, 28% and 55% at the 13B, Tülu-8B and OLMo-7B on the weighted fit (18%, 28%,
 47% unweighted). The weighted typicality-minus-shared contrast runs +118 to +527
@@ -472,7 +496,11 @@ reference operator is not ruled out.
 
 ---
 
-## 6. Two decoding-time interventions
+## 6. Two decoding-time interventions (exploratory)
+
+The evidence in this section is thin by design: five prompts at 135M, twelve at
+1B, and a single fluency judge (GPT-2, 124M). It is reported as counterexamples to
+earlier predictions, not as validated methods for recovering diversity.
 
 ### 6.1 Extrapolating along the base–aligned axis
 
@@ -614,7 +642,10 @@ a stage comparison that reports the position convention of §2.
 ## 9. Limitations
 
 1. **Four pipelines, two base families.** The shared-shift result replicates within
-   two lineages that use related instruction mixtures.
+   two lineages that use related instruction mixtures. The OLMo 7B and 13B share
+   one release, so their agreement is a within-release scale comparison, not an
+   independent replication. The unit of inference is the prompt: 36 prompts in six
+   task families, however many positions each contributes.
 2. **The lineage test rules out ancestry, not data.** Both families train on
    Tülu-3-style mixtures, so shared training data remains a live explanation.
 3. **β was measured at the 1B, 7B and Tülu-8B**, on 400 sampled positions, but not
@@ -682,6 +713,7 @@ reproducible without stating it.
 | `register_v2.py` | shared-shift geometry, both arms, null controls |
 | `decomp.py` | counterfactual Shapley entropy decomposition |
 | `decomp_resid.py` | non-linear typicality, cross-fitted shared directions |
+| `robustness.py` | specification grid for §5.1 (weighting × plausible threshold × held-out shared direction), R² and Shapley shares under the same fit, per-family and leave-one-family-out shares (exploratory, v1.0) |
 | `check_tokenizers.py` | token-ID-level tokeniser identity verification |
 | `grind.py`, `matched6.py` | generation sweep and matched-diversity scoring |
 | `gen_scale.py` (mode `ctrl`), `pilot-135m/gen_ctrl.py` | shuffled-delta direction control, at scale and at 135M |
@@ -696,6 +728,20 @@ at https://github.com/amitd01/axisalignment-paper: the 13B scale test, the regis
 decomposition, the residual test and the 135M γ sweep. Two carry dated notes
 appended after the fact; the hashes cover the original text and the notes state
 what changed and when.
+
+| pre-registration | written (IST) | already seen when written | note appended | outcome | standing |
+|---|---|---|---|---|---|
+| 13B scale test | 2026-10-13 20:20 | 1B and 7B prompt-final shares | 21:21, before any 13B dump: comparison basis moved to continuation positions | trend continues, +15.6 [+12.7, +18.6] (§3.1) | confirmatory, amended |
+| register test | 2026-10-13 20:22 | no register data | — | ρ_reg > ψ, all four (§4.2) | confirmatory |
+| lineage test | 2026-10-13 22:20 | same-lineage value −0.19 | — | −0.194, transfer (§4.4) | confirmatory |
+| entropy decomposition | 2026-10-13 22:25 | stage shares; no decomposition | — | head > 50%: not supported; typicality > shared: holds (§5) | confirmatory |
+| residual test | 2026-10-13 23:13 | decomposition shares | before the run: position-specific claim withdrawn | non-linear claim too strong at 1B, Tülu (§5.2) | confirmatory for the non-linear question; ε share descriptive |
+| 135M γ sweep | 2026-10-13 23:28 | published 135M scores | — | unresolved (§6.2) | confirmatory, underpowered |
+
+Not pre-registered, and reported as exploratory: the variance shares (R²) of §5.1
+and the specification grid in `robustness.py`. The adoption of base-written
+continuations as the primary convention for stage shares (§2.2) is the 13B row's
+appended note.
 
 Seeds: 20261012 (1B), 20260803 (135M). N = 6 samples, 32 new tokens, top-p 0.95
 held constant. Fixed seeds do not guarantee bit-identical output across hardware;

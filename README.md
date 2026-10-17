@@ -77,6 +77,8 @@ code/                    analysis and generation
   register_v2.py         shared-shift geometry (rho_reg), both arms, null controls
   decomp.py              counterfactual Shapley entropy decomposition
   decomp_resid.py        non-linear typicality, cross-fitted shared directions
+  robustness.py          specification grid for §5.1: R^2 and Shapley shares under the
+                         same fit, per-family and leave-one-family-out (exploratory, v1.0)
   check_tokenizers.py    token-ID-level tokeniser identity verification
   gen_scale.py           generation sweep; mode `ctrl` is the shuffled-delta control
   score_scale.py         scores the sweep
@@ -138,6 +140,7 @@ python dump_logprobs_mps.py      # or dump_logprobs.py off Apple Silicon
 python analyse_psi_family.py
 python register_v2.py
 python decomp.py
+python robustness.py olmo olmo7b tulu olmo13b --stride 4   # quick spec grid; drop --stride for the full run
 python decomp_resid.py
 ```
 
