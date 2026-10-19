@@ -176,7 +176,7 @@ These are known gaps. Each is listed so that its absence from the paper is not r
 
 | # | item | what would close it |
 |---|---|---|
-| C1 | The grid's numbers come from the stride-4 run. | Run `code/robustness.py` without `--stride`; update §5.1 from `logs/robustness_tables.py ""`. |
+| C1 | The grid's numbers come from the stride-4 run. Against the full-position `results_decomp_*.json` (pre-registered spec), stride 4 moves the 1B by 8.6 points (instruction tuning) and 31.2 points (preference stage); 7B, Tülu and 13B move by at most 2.1 (`logs/robustness_s4.txt`, stride check). | Run `code/robustness.py` without `--stride`; update §5.1 from `logs/robustness_tables.py ""`. |
 | C2 | Whether the typicality and shared components are separately identifiable (A1.8). | Report the per-position correlation between reference log-probability and the shared direction. |
 | C3 | Sample-count versus context effects across conventions (A5.2). | Subsample continuation positions to match prompt-final counts. |
 | C4 | The shared direction against frequency or formatting baselines (A7.1). | Compare ρ_reg against a token-frequency direction, and recompute it with punctuation, whitespace and special tokens excluded. |
