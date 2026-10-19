@@ -1,4 +1,9 @@
 .DS_Store
 __pycache__/
 *.pyc
+*.tar.gz
+# Raw per-checkpoint log-prob dumps are ~53GB and regenerable with
+# code/dump_logprobs_mps.py. The 135M sweep outputs are small enough to ship.
+code/dumps/*
+!code/dumps/135m/
 Peer Review LLM/

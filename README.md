@@ -77,6 +77,8 @@ code/                    analysis and generation
   register_v2.py         shared-shift geometry (rho_reg), both arms, null controls
   decomp.py              counterfactual Shapley entropy decomposition
   decomp_resid.py        non-linear typicality, cross-fitted shared directions
+  robustness.py          specification grid for §5.1: R^2 and Shapley shares under the
+                         same fit, per-family and leave-one-family-out (exploratory, v1.0)
   check_tokenizers.py    token-ID-level tokeniser identity verification
   gen_scale.py           generation sweep; mode `ctrl` is the shuffled-delta control
   score_scale.py         scores the sweep
@@ -100,6 +102,8 @@ logs/                    run scripts and the evaluation outputs behind the numbe
   lineage_eval.txt       the cross-lineage statistic (-0.194 both arms)
   prereg13b_eval.py/.txt the pre-registered 13B evaluation (+15.6 [12.7, 18.6])
   r2_full.py/.txt        R^2 point estimates and intervals, unweighted and weighted
+  robustness_tables.py   reprints the §5.1 specification grid from results/ and computes
+  robustness_s4.txt      every range §5.1 cites from it (stride-4 run)
   offset_check.py        the whose-text offset check
   make_task2_tables.py   regenerates the numbers behind the tables in §2.3, §3.1
                          and §4.2
@@ -118,6 +122,8 @@ results/
   verify_prereg.py       checks all six hashes, including the two with notes
   TASK1-REPORT.md        verification reports
   TASK2-REPORT.md
+paper-controls.md        every counter-argument raised and every modelling choice revised,
+                         with its response and evidence
 paper/
   paper.md               source of record
   main.tex               arXiv submission source
@@ -138,6 +144,7 @@ python dump_logprobs_mps.py      # or dump_logprobs.py off Apple Silicon
 python analyse_psi_family.py
 python register_v2.py
 python decomp.py
+python robustness.py olmo olmo7b tulu olmo13b --stride 4   # quick spec grid; drop --stride for the full run
 python decomp_resid.py
 ```
 
